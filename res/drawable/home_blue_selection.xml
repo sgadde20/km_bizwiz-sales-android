@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <solid android:color="@color/myhotquotes_row_blue" />
+
+    <corners android:radius="@dimen/five" />
+
+    <!--
+         <padding 
+        android:left="@dimen/five"
+        android:top="@dimen/five" 
+        android:right="@dimen/ten" 
+        android:bottom="@dimen/five" />
+    -->
+
+</shape>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fiftyfive"
+        android:background="@drawable/ic_home_header"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/back_icon"
+            android:layout_width="@dimen/sixty"
+            android:layout_height="@dimen/fiftyfive"
+            android:layout_alignBottom="@+id/image_back_icon"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/image_back_icon"
+            android:contentDescription="@string/contentDescription"
+            android:src="@drawable/selector_back_btn" />
+
+        <ImageView
+            android:id="@+id/image_back_icon"
+            android:layout_width="@dimen/ninety"
+            android:layout_height="@dimen/fiftyfive"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/five"
+            android:layout_toRightOf="@+id/back_icon"
+            android:contentDescription="@string/contentDescription"
+            android:src="@drawable/selector_logo_btn" />
+
+        <SearchView
+            android:id="@+id/about_searchView"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/fiftyfive"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/five"
+            android:maxWidth="@dimen/twohundred"
+            android:visibility="gone" >
+        </SearchView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_margin="@dimen/six"
+        android:background="@drawable/shape_main_list_row" >
+
+        <TextView
+            android:id="@+id/textView1"
+            style="@style/customer_page_texts.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/six"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_marginRight="@dimen/six"
+            android:layout_marginTop="@dimen/thirty"
+            android:text="@string/about" />
+
+        <TextView
+            android:id="@+id/textView_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView1"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_marginRight="@dimen/ten"
+            android:text="@string/about_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt16" />
+
+        <TextView
+            android:id="@+id/textview_appt_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView_content"
+            android:layout_marginLeft="@dimen/fifteen"
+            android:linksClickable="true"
+            android:paddingBottom="@dimen/twentyfive"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="@dimen/oneeighty"
+        android:layout_height="@dimen/hundred10"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/twenty"
+        android:contentDescription="@string/contentDescription"
+        android:src="@drawable/ic_bizwiz_logo" />
+
+</RelativeLayout>

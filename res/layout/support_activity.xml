@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fiftyfive"
+        android:background="@drawable/ic_home_header"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/back_icon"
+            android:layout_width="@dimen/sixty"
+            android:layout_height="@dimen/fiftyfive"
+            android:layout_alignBottom="@+id/image_back_icon"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/image_back_icon"
+            android:contentDescription="@string/contentDescription"
+            android:src="@drawable/selector_back_btn" />
+
+        <ImageView
+            android:id="@+id/image_back_icon"
+            android:layout_width="@dimen/ninety"
+            android:layout_height="@dimen/fiftyfive"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/five"
+            android:layout_toRightOf="@+id/back_icon"
+            android:contentDescription="@string/contentDescription"
+            android:src="@drawable/selector_logo_btn" />
+
+        <SearchView
+            android:id="@+id/support_searchView"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/fiftyfive"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/five"
+            android:maxWidth="@dimen/twohundred"
+            android:visibility="gone" >
+        </SearchView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_margin="@dimen/ten"
+        android:background="@drawable/shape_main_list_row"
+        android:paddingBottom="@dimen/twentyfive" >
+
+        <TextView
+            android:id="@+id/textview_questions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/five"
+            android:text="@string/support_questions"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt18"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textview_questions_about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textview_questions"
+            android:layout_marginLeft="@dimen/five"
+            android:text="@string/support_question_about"
+            android:textColor="@color/white" />
+
+        <RelativeLayout
+            android:id="@+id/layout_support"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textview_questions_about"
+            android:layout_marginTop="@dimen/ten" >
+
+            <Button
+                android:id="@+id/button_support"
+                android:layout_width="@dimen/fortyfive"
+                android:layout_height="@dimen/fortyfive"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/ten"
+                android:background="@drawable/ic_support"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="@dimen/twenty"
+                android:layout_toRightOf="@+id/button_support"
+                android:text="@string/support_click"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt12" />
+
+            <TextView
+                android:id="@+id/textView_supporturl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView1"
+                android:layout_below="@+id/textView1"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt14"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_call"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textview_or"
+            android:layout_marginTop="@dimen/five" >
+
+            <TextView
+                android:id="@+id/textView_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textview_appt_type"
+                android:layout_below="@+id/textview_appt_type"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt14"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textview_appt_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/twenty"
+                android:layout_toRightOf="@+id/button_callBizwiz"
+                android:text="@string/support_call"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt12" />
+
+            <Button
+                android:id="@+id/button_callBizwiz"
+                android:layout_width="@dimen/fortyfive"
+                android:layout_height="@dimen/fortyfive"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/ten"
+                android:background="@drawable/selector_ic_call_button_pressed_btn"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/textview_or"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_support"
+            android:gravity="center"
+            android:text="@string/support_or"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt16"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="@dimen/oneeighty"
+        android:layout_height="@dimen/hundred10"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/contentDescription"
+        android:src="@drawable/ic_bizwiz_logo" />
+
+</RelativeLayout>

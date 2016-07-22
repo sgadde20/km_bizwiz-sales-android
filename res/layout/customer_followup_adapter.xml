@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/followup_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/five"
+        android:layout_marginTop="@dimen/one"
+        android:layout_marginBottom="@dimen/one"
+        android:background="@drawable/shape_myhotquotes_row_blue"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/three"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/cus_followup_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 android:singleLine="true"
+                 android:textSize="@dimen/txt10"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/cus_followup_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 android:singleLine="true"
+                  android:textSize="@dimen/txt10"
+                android:text="TextView" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/cus_followup_note"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+             android:layout_weight="1"
+             android:lines="3"
+             android:gravity="center_vertical"
+             android:ellipsize="end"
+              android:textSize="@dimen/txt14"
+              android:layout_marginRight="@dimen/five"
+              android:layout_marginLeft="@dimen/five"
+            android:text="TextView" />
+
+        <LinearLayout
+            android:id="@+id/resolve_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/three"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/cus_followup_resolve"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#5e92bd"
+                 android:textSize="@dimen/txt10"
+                android:text="@string/resolved_on" />
+
+            <TextView
+                android:id="@+id/cus_followup_resolve_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 android:textColor="#5e92bd"
+                  android:textSize="@dimen/txt10"
+                android:text="TextView" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

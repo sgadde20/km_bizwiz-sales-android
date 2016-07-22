@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:id="@+id/relativecell"
+    android:layout_width="@dimen/ninety"
+    android:layout_height="@dimen/eighty"
+    android:background="@drawable/shape_calendar_even_row"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="2dip" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="@dimen/twentyfive"
+            android:layout_height="@dimen/twentyfive"
+            android:layout_marginBottom="@dimen/ten"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt14"
+            android:textStyle="bold" >
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center" >
+
+        <ImageView
+            android:id="@+id/ImageView_Green_Circle"
+            android:layout_width="@dimen/six"
+            android:layout_height="@dimen/six"
+            android:layout_marginLeft="@dimen/two"
+            android:layout_marginRight="@dimen/two"
+            android:contentDescription="@string/contentDescription"
+            android:src="@drawable/shape_circle_green"
+           />
+        
+        <ImageView
+            android:id="@+id/ImageView_Orange_Circle"
+            android:layout_width="@dimen/six"
+            android:layout_height="@dimen/six"
+            android:layout_marginLeft="@dimen/two"
+            android:layout_marginRight="@dimen/two"
+            android:contentDescription="@string/contentDescription"
+            android:src="@drawable/shape_circle_orange"
+            />
+        
+        <ImageView
+            android:id="@+id/ImageView_Blue_Circle"
+            android:layout_width="@dimen/six"
+            android:layout_height="@dimen/six"
+            android:layout_marginLeft="@dimen/two"
+            android:layout_marginRight="@dimen/two"
+            android:contentDescription="@string/contentDescription"
+            android:src="@drawable/shape_circle_blue"
+            />
+        
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fiftyfive"
+        android:background="@drawable/ic_home_header"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/back_icon"
+            android:layout_width="@dimen/sixty"
+            android:layout_height="@dimen/fiftyfive"
+            android:layout_alignBottom="@+id/image_back_icon"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/image_back_icon"
+            android:contentDescription="@string/contentDescription"
+            android:src="@drawable/selector_back_btn" />
+        
+
+        <ImageView
+            android:id="@+id/image_back_icon"
+            android:layout_width="@dimen/ninety"
+            android:layout_height="@dimen/fiftyfive"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/five"
+            android:layout_toRightOf="@+id/back_icon"
+            android:contentDescription="@string/contentDescription"
+            android:src="@drawable/selector_logo_btn" />
+
+        <SearchView
+            android:id="@+id/gallery_searchView"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/fiftyfive"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/five"
+            android:focusableInTouchMode="true"
+            android:maxWidth="@dimen/twohundred"
+            android:visibility="visible" >
+        </SearchView>
+    </RelativeLayout>
+
+    <GridView
+        android:id="@+id/gridview"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/five"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:horizontalSpacing="@dimen/five"
+        android:numColumns="6"
+        android:verticalSpacing="@dimen/five" />
+
+    <LinearLayout
+        android:id="@+id/uploadLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fifty"
+        android:background="@drawable/gallery_background"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/capture"
+            android:layout_width="@dimen/forty"
+            android:layout_height="@dimen/forty"
+            android:layout_marginBottom="@dimen/five"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_marginRight="@dimen/ten"
+            android:layout_marginTop="@dimen/five"
+            android:background="@drawable/selector_gallery_camara_pressed_btn"
+            android:contentDescription="@string/capture" />
+
+        <ImageView
+            android:id="@+id/select"
+            android:layout_width="@dimen/forty"
+            android:layout_height="@dimen/forty"
+            android:layout_marginBottom="@dimen/five"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_marginRight="@dimen/ten"
+            android:layout_marginTop="@dimen/five"
+            android:background="@drawable/selector_gallery_select_pressed_btn"
+            android:contentDescription="@string/select" />
+        <Button 
+            android:id="@+id/pdf_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/five"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_marginRight="@dimen/ten"
+            android:layout_marginTop="@dimen/five"
+            android:background="@drawable/selector_dark_button"
+            android:text="@string/pdf_btn"
+            android:textColor="@color/white"
+            />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,52 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/five"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/five"
+            android:layout_weight="1"
+            android:background="@drawable/edittext_border"
+            android:hint="@string/phone"
+            android:imeOptions="actionNext"
+            android:inputType="phone"
+            android:singleLine="true"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/add_prospect_text_color" />
+
+        <FrameLayout
+            android:id="@+id/stateFrame"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/edittext_border"
+            android:orientation="horizontal" >
+
+            <Spinner
+                android:id="@+id/phoneTypespinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/custome_spinner_background"
+                android:textColor="@color/add_prospect_text_color" />
+
+            <ImageView
+                android:layout_width="@dimen/fifteen"
+                android:layout_height="@dimen/ten"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="@dimen/five"
+                android:background="@drawable/ic_spinner_background"
+                android:contentDescription="@string/app_name" />
+        </FrameLayout>
+    </LinearLayout>
+
+</LinearLayout>

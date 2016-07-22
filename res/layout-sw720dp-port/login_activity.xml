@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/linearlayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:gravity="center_horizontal" >
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_username"
+            android:hint="@string/email_hint"
+            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="@dimen/fifty"
+            android:paddingRight="@dimen/ten"
+            android:textSize="@dimen/txt25" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearlayout1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/twenty"
+        android:gravity="center_horizontal" >
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_password"
+            android:hint="@string/password_hint"
+            android:inputType="textPassword"
+            android:paddingLeft="@dimen/fifty"
+            android:paddingRight="@dimen/ten"
+            android:textSize="@dimen/txt25" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/linearlayout2"
+        android:layout_below="@+id/linearlayout2"
+        android:layout_marginTop="@dimen/twenty"
+        android:background="@drawable/selector_login_btn" />
+
+    <ImageView
+        android:id="@+id/ImageView01"
+        android:layout_width="@dimen/onefifty"
+        android:layout_height="@dimen/twentyfive"
+        android:layout_above="@+id/linearlayout1"
+        android:layout_alignLeft="@+id/logo"
+        android:layout_marginBottom="@dimen/seventy"
+        android:background="@drawable/sales_app" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="@dimen/onefifty"
+        android:layout_height="@dimen/fortyfive"
+        android:layout_above="@+id/ImageView01"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/fifty"
+        android:background="@drawable/bizwiz_logo" />
+
+</RelativeLayout>

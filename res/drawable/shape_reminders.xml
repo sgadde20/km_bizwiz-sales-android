@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <gradient
+        android:centerColor="@color/reminder_cell"
+        android:endColor="@color/reminder_cell"
+        android:startColor="@color/reminder_cell" />
+
+    <corners android:radius="4dp" />
+
+</shape>

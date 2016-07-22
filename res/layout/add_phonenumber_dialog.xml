@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/ten"
+        android:background="@drawable/resolve_background"
+        android:paddingBottom="@dimen/twenty"
+        android:paddingLeft="@dimen/five"
+        android:paddingRight="@dimen/five"
+        android:paddingTop="@dimen/twenty" >
+
+        <LinearLayout
+            android:id="@+id/add_phonenumber_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty"
+            android:layout_margin="@dimen/twenty"
+            android:orientation="horizontal"
+            android:weightSum="2" >
+
+            <EditText
+                android:id="@+id/add_phonenumber_name"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/fifty"
+                android:layout_marginRight="@dimen/five"
+                android:layout_weight="1"
+                android:cursorVisible="false"
+                android:ems="10"
+                android:hint="Phone"
+                android:inputType="phone"
+                android:singleLine="true"
+                android:background="@drawable/ed_color"
+                android:textSize="@dimen/txt14" />
+            <Spinner
+                android:id="@+id/add_phonenumber_spinner"
+                style="@style/DropDownNav"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+           
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/forty"
+            android:layout_below="@+id/add_phonenumber_layout"
+            android:layout_marginLeft="@dimen/twenty"
+            android:layout_marginRight="@dimen/twenty"
+            android:weightSum="2" >
+
+            <Button
+                android:id="@+id/add_phonenumber_save_btn"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/forty"
+                android:layout_marginRight="@dimen/five"
+                android:layout_weight="1"
+                android:background="@drawable/selector_prospect_save_button"
+                android:text="@string/save"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/add_phonenumber_cancel_btn"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/forty"
+                android:layout_marginLeft="@dimen/five"
+                android:layout_weight="1"
+                android:background="@drawable/selector_prospect_save_button"
+                android:text="@string/cancel"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

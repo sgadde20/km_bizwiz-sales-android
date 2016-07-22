@@ -1,0 +1,96 @@
+{
+    "CT": [
+        {
+            "Id": "1",
+            "CompanyType": "Engineer",
+            "SubType": [
+                {
+                    "Id": "1",
+                    "CompanySubType": "Geotechnical"
+                },
+                {
+                    "Id": "2",
+                    "CompanySubType": "Structural"
+                },
+                {
+                    "Id": "3",
+                    "CompanySubType": "Electrical"
+                },
+                {
+                    "Id": "4",
+                    "CompanySubType": "Civil"
+                },
+                {
+                    "Id": "5",
+                    "CompanySubType": "Consulting"
+                },
+                {
+                    "Id": "6",
+                    "CompanySubType": "Environmental"
+                }
+            ]
+        },
+        {
+            "Id": "2",
+            "CompanyType": "Home Inspector",
+            "SubType": []
+        },
+        {
+            "Id": "3",
+            "CompanyType": "Property Manager",
+            "SubType": []
+        },
+        {
+            "Id": "4",
+            "CompanyType": "Realtor",
+            "SubType": [
+                {
+                    "Id": "7",
+                    "CompanySubType": "VAR legislative"
+                }
+            ]
+        },
+        {
+            "Id": "5",
+            "CompanyType": "General Contractor",
+            "SubType": []
+        },
+        {
+            "Id": "6",
+            "CompanyType": "Unknown",
+            "SubType": []
+        },
+        {
+            "Id": "7",
+            "CompanyType": "Architect",
+            "SubType": []
+        },
+        {
+            "Id": "8",
+            "CompanyType": "Building Official",
+            "SubType": []
+        }
+    ],
+    "PT": [
+        {
+            "Id": "1",
+            "PhoneType": "Home"
+        },
+        {
+            "Id": "2",
+            "PhoneType": "Work"
+        },
+        {
+            "Id": "3",
+            "PhoneType": "Mobile"
+        },
+        {
+            "Id": "4",
+            "PhoneType": "Fax"
+        },
+        {
+            "Id": "5",
+            "PhoneType": "Other"
+        }
+    ]
+}

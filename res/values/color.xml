@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="body_background">#EFEDE8</color>
+    <color name="apptheme_color">#5e91bd</color>
+    <color name="blue_bg">#74a7d4</color>
+    <color name="blue_button_bg">#356185</color>
+    <color name="blue_tab1_bg">#5e91c0</color>
+    <color name="blue_tab2_bg">#4977a1</color>
+    <color name="blue_tab3_bg">#355c80</color>
+    <color name="gray_list1_bg">#dedede</color>
+    <color name="gray_list2_bg">#e5e5e5</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <!-- Calendar page Colors list -->
+    <color name="orange_circle">#F79646</color>
+    <color name="blue_circle">#00aff0</color>
+    <color name="green_circle">#7ed13b</color>
+    <color name="sunday_bg_color">#bacce2 </color>
+    <color name="monday_bg_color">#a6b9d0</color>
+    <color name="tuesday_bg_color">#7d99b1</color>
+    <color name="wednesday_bg_color">#6083a1</color>
+    <color name="thursday_bg_color">#4a7aa4</color>
+    <color name="friday_bg_color">#436f95</color>
+    <color name="saturday_bg_color">#355c7d</color>
+    <color name="lite_gray_bg_color">#CCCCCC</color>
+    <color name="calrndar_day_text_color">#0a5b79</color>
+    <color name="selected_date_bg_color">#7a63f3</color>
+    <color name="calrndar_day_detail_bg_color">#355c7d</color>
+    <color name="semitransparent">#80000000</color>
+    <color name="save_color">#386793</color>
+    <color name="border_color">#636363</color>
+    <color name="add_prospect_text_color">#403e3e</color>
+    <color name="full_transparent">#80000000</color>
+    <color name="save_color_press">#0C233A</color>
+    <color name="month_view_list_bg">#32476c</color>
+    <color name="myhotquotes_row_blue">#00b2ed</color>
+    <color name="gray_calender_cell">#f7f7f7</color>
+    <color name="settings_cell">#e0e0e0</color>
+    <color name="reminder_cell">#f0f0f0</color>
+    <color name="hotqueotes_select">#858585</color>
+    <color name="gray_header">#F1F1F1</color>
+    <color name="action_bar_color">#ff1a1b1d</color>
+    <color name="settings_reminder_select">#00b0f0</color>
+    <color name="followup_text_background">#f4f4f4</color>
+    <color name="Green">#4DB635</color>
+
+</resources>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:id="@+id/followup_dialog_scrollview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/ten"
+        android:background="@drawable/resolve_background"
+        android:padding="@dimen/twentyfive"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/followup_resolve_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/eight"
+                android:layout_marginTop="@dimen/five"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/blue_button_bg"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/followup_resolve_note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/five"
+                android:text="@string/followup_note"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/followup_resolve_followup_note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/resolve_text_background"
+                android:ems="10"
+                android:gravity="top"
+                android:minLines="7"
+                android:padding="@dimen/five"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/followup_resolve_completion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/five"
+                android:layout_marginTop="@dimen/twenty"
+                android:text="@string/completion_note"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/followup_resolve_completion_note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/ten"
+                android:background="@drawable/resolve_text_background"
+                android:cursorVisible="false"
+                android:ems="10"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:lines="7"
+                android:padding="@dimen/five"
+                android:textColor="@color/black" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/twenty"
+                android:paddingRight="@dimen/twenty"
+                android:weightSum="2" >
+
+                <Button
+                    android:id="@+id/followup_resolve_resolve_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_prospect_save_button"
+                    android:gravity="center"
+                    android:text="@string/resolve"
+                    android:textColor="@color/gray_list1_bg"
+                    android:layout_marginRight="@dimen/three"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/followup_resolve_close_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                     android:layout_weight="1"
+                     android:text="@string/cancel"
+                      android:textColor="@color/gray_list1_bg"
+                      android:layout_marginLeft="@dimen/three"
+                      android:textStyle="bold"
+                    android:background="@drawable/selector_prospect_save_button"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

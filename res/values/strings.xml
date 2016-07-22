@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- proposal summary -->
+    <string name="proposal">Proposal</string>
+    <string name="check_out">Check Out</string>
+    <string name="add_more">Add More Products</string>
+    <string name="qty">Qty</string>
+    <string name="appointmenttype">Appointment Type</string>
+    <string name="search">search</string>
+    <string name="drawer_open"></string>
+    <string name="drawer_close"></string>
+    <string name="app_name">Bizwiz Sales</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="add_prospect">ADD PROSPECT</string>
+    <string name="calendar">CALENDAR</string>
+    <string name="my_mtd_sales">MY MTD SALES</string>
+    <string name="my_ytd_sales">MY YTD SALES</string>
+    <string name="my_adl">MY 90 DAY ADL</string>
+    <string name="contentDescription">BizWizImages</string>
+    <string name="search_hint">Search</string>
+    <string name="signing_here">Sign Here</string>
+
+    <!-- LOGIN PAGE  VALIDATION STRING -->
+    <string name="email_hint">Email address</string>
+    <string name="password_hint">Password</string>
+    <string name="email">Enter the email address</string>
+    <string name="valid_email">Enter the  valid email address</string>
+    <string name="password">Enter the password</string>
+    <string name="valid_all">Please enter the username and password </string>
+    <string name="internet">Internet is not available. Please check your internet connection</string>
+    <string name="login_update_response">You have missing appointment results. Go to your Recent Appointments to update the results and unlock your system.</string>
+     <string name="toast_for_no_recent_appointment">The logged in user does not have recent appointments in primary system.</string>
+
+    <!-- Calendar screen -->
+    <string name="appointments">APPOINTMENTS</string>
+    <string name="followups">FOLLOW-UPS</string>
+    <string name="notes">NOTES</string>
+    <string name="sunday">Sun</string>
+    <string name="monday">Mon</string>
+    <string name="thuesday">Tue</string>
+    <string name="wednesday">Wed</string>
+    <string name="thuresday">Thur</string>
+    <string name="friday">Fri</string>
+    <string name="saturday">Sat</string>
+    <string name="load_more_appointments">Load More Appointments</string>
+    <string name="loading_more_appointments">Loading More Appointments</string>
+    <string name="loading">loading...</string>
+    <string name="dash">-</string>
+    <string name="alert">ALERT</string>
+    <string name="ok">Ok</string>
+
+    <!-- Custome Detail Screen -->
+    <string name="custmer_detail_appointments">Appointments</string>
+    <string name="custmer_detail_projects">Projects</string>
+
+    <!-- Add prospect screen -->
+    <string name="prospect_contact">Prospect</string>
+    <string name="professional_contact">Professional Contact</string>
+    <string name="company_name">Company Name</string>
+    <string name="company_type">Company Type</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="update">Update</string>
+    <string name="second_name"> Secondary Contact</string>
+    <string name="phone">Phone</string>
+    <string name="type">Type</string>
+    <string name="email_text">Email</string>
+    <string name="company_street_Address">Company Street Address</string>
+    <string name="prospect_company_street_Address">Street Address</string>
+    <string name="zip">Zip</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="save">Save</string>
+    <string name="save_and_bookappt">Save &amp; Book Appt</string>
+    <string name="close_popup_window">Close</string>
+    <string name="add_prospect_contact">Add Prospect</string>
+    <string name="add_professional_contact">Add Professional Contact</string>
+    <string name="calendar_notes">CALENDAR NOTES</string>
+
+    <!-- Support Screen -->
+    <string name="support_goto">Go to Support</string>
+    <string name="support_callbizwiz">Call Bizwiz</string>
+    <string name="support_questions">Questions</string>
+    <string name="support_or">Or</string>
+    <string name="support_question_about">Have a question about your Sales App?</string>
+    <string name="support_click">Click the button to go directly to the\nweb or Search for answers by going to</string>
+    <string name="support_string">&lt;u>support.teambizwiz.com.&lt;/u></string>
+    <string name="support_call">Call one of our support\nagents at</string>
+    <string name="support_call_number">&lt;u>877-358-3100&lt;/u>.</string>
+    <!-- Settings Screen -->
+    <string name="follow_up_notification">Follow up</string>
+    <string name="appointment_notification">Appointment</string>
+    <string name="add_reminder">Reminder Set</string>
+    <string name="add_notification">Add Periodic Reminder</string>
+    <string name="price_info">Price information</string>
+    <string name="auto_sync">Auto Sync</string>
+
+    <!-- Customer Detail Screen -->
+    <string name="customer_detail_appointments">Appointments</string>
+    <string name="customer_detail_projects">Projects</string>
+    <string name="customer_detail_followups">FollowUps</string>
+    <string name="quoted">Quoted</string>
+    <string name="due">Due  : </string>
+    <string name="sold">Sold : </string>
+    <string name="email_to">Mail To</string>
+    <string name="email_subject">Subject Line</string>
+    <string name="email_body">Body</string>
+
+    <!-- Settings Screen -->
+    <string name="settings">Settings</string>
+    <string name="days">Days</string>
+    <string name="hours">Hours</string>
+    <string name="minte">Minutes</string>
+    <string name="done">Done</string>
+
+    <!-- Followup Screen -->
+    <string name="resolve">Resolve</string>
+    <string name="resolved_on">Resolved on</string>
+    <string name="followup_note">Follow up notes</string>
+    <string name="completion_note">Completion Notes</string>
+    <string name="follow_ups">FollowUps</string>
+
+    <!-- Notes Screen -->
+    <string name="notes_title">Notes</string>
+    <string name="add_new_customer_note">Add New Customer Note</string>
+    <string name="referenceto">In Reference to:</string>
+    <string name="leadtype">Lead Type:</string>
+    <!-- About Screen -->
+    <string name="about">About This App</string>
+    <string name="about_content">The Sales App is designed to streamline your sales process, making it easier to update your sales results, view customer records and provide a detailed estimate.\n\n
+For more information or help, go to </string>
+
+    <string-array name="planets_array">
+        <item>USA</item>
+        <item>Canada</item>
+    </string-array>
+    <string-array name="time_interval">
+        <item>30 Min</item>
+        <item>01 Hrs</item>
+        <item>1:30 Hrs </item>
+        <item>2 Hrs</item>
+        <item>2:30 Hrs</item>
+        <item>3 Hrs</item>
+        <item>3:30 Hrs</item>
+        <item>4 Hrs</item>
+    </string-array>
+    <!-- Customer Attachments -->
+    <string name="pdf_btn">PDF</string>
+    <string name="followup_asigned_to">Follow up assigned to:</string>
+    <string name="schedule_new_followup">Schedule New Follow Up </string>
+    <string name="new_notes">Notes</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="cancel">Cancel</string>
+    <string name="add_new_contact">Add New Number</string>
+    <string name="attachments">Attachments</string>
+    <string name="pending_documents">Pending Documents</string>
+    <string name="add_attachments">Add Attachments</string>
+    <!-- Sequal Videos Screen -->
+    <string name="click_to_schedule">Click To\nSchedule</string>
+    <string name="no_application">This file type is not associated with any application on this device. Please visit Google Play and install a corresponding viewer.</string>
+    <string name="schedule">Schedule</string>
+    <string name="capture">Capture</string>
+    <string name="select">Select</string>
+
+    <!-- SalesProcess Screen -->
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="three">3</string>
+    <string name="four">4</string>
+    <string name="five">5</string>
+    <string name="six">6</string>
+    <string name="choose_product_category">Choose Product Category</string>
+    <string name="filter">Filter</string>
+    <string name="updateproposal">Update Proposal</string>
+    <string name="proposal_amount">Proposal Amount</string>
+    <string name="unit_price">Unit Price</string>
+    <string name="product_description">Product Description</string>
+    <string name="amount">Amount</string>
+    <string name="quantity">Quantity</string>
+    <string name="product_notes">Notes</string>
+    <string name="add_new_product">Add New Product</string>
+    <string name="generate_proposal">View proposal</string>
+    <!-- smart search -->
+    <string name="smart_search">Smart Search</string>
+    <string name="recent_product">Recent Product</string>
+
+    <!-- Sales Result -->
+
+    <string name="appnt_result">Appointment Results</string>
+    <string name="appnt_subresult">Appointment Sub-Results</string>
+    <string name="appnt_questionaire">Questionnaire</string>
+
+    <!-- Checkout -->
+    <string name="work_description">Contract Notes</string>
+    <string name="signature">Signature</string>
+    <string name="i_agree">By Signing above, I agree to pay JES for the work done if it scopes etc I will pay difference.A lot of more legal documentation that lawyers have to protect both the customer and our company.</string>
+    <string name="conti">Continue</string>
+    <string name="clear">Clear</string>
+    <string name="payment_information">Payment Information</string>
+    <string name="contract_amount">Contract Amount</string>
+    <string name="tw_percent">20%</string>
+    <string name="fif_percent">50%</string>
+    <string name="hun_percent">100%</string>
+    <string name="others">Other</string>
+    <string name="payment_amount">Payment Amount</string>
+    <string name="payment_cash">Payment Cash</string>
+    <string name="payment_check">Payment Check</string>
+    <string name="payment_creitcard">Payment Creitcard</string>
+    <string name="payment_financing">Payment Financing</string>
+    <string name="percentage_add">Add</string>
+    <string name="percentage_text">Percentage</string>
+    <string name="percentage_amount">Amount</string>
+    <string name="check_number">Check Number</string>
+    <string name="sort_result_by">Sort Results By:</string>
+    <string name="name">Name</string>
+    <string name="add_more_photo">Add / Take Photos</string>
+    <string name="view_proposal">View Proposal</string>
+    <string name="address">Address</string>
+    <string name="zipcode">Zip Code</string>
+    <string name="seven">7</string>
+    <string name="eight">8</string>
+    <string name="nine">9</string>
+    <string name="zero">0</string>
+    <string name="state_province">State/Province</string>
+    <string name="receipt_email">Receipt Email</string>
+    <string name="swipe">SWIPE</string>
+    <string name="double_zero">00</string>
+    <string name="use_swiper_in">Use Swiper in</string>
+    <string name="device_status">Device Status</string>
+    <string name="credit_card_types">Credit Card Types</string>
+    <string name="cc">CC#</string>
+    <string name="exp">Exp</string>
+    <string name="ccv">CVV</string>
+    <string name="proceed">Proceed</string>
+    <string name="transaction_status">Transaction Status</string>
+    <string name="i_agree_in_credit_card">I agree to pay the above amount according to card issuer agreement.</string>
+    <string name="location">Location</string>
+
+</resources>

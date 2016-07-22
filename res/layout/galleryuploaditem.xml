@@ -1,0 +1,24 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/gallary_border"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/galeryImage"
+        android:layout_width="@dimen/sixty"
+        android:layout_height="@dimen/sixty"
+        android:layout_margin="@dimen/five"
+        android:contentDescription="@string/contentDescription" />
+
+   <EditText
+        android:id="@+id/discriptionText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/fifteen"
+        android:background="@drawable/galleryuploadedit"
+        android:gravity="left|center_vertical"
+        android:inputType="text"
+        android:padding="@dimen/five" />
+
+</LinearLayout>

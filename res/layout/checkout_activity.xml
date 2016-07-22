@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/test"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"  >
+
+    <RelativeLayout
+        android:id="@+id/toplinearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fiftyfive"
+        android:background="@drawable/ic_home_header"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/checkout_back_icon"
+            android:layout_width="@dimen/sixty"
+            android:layout_height="@dimen/fiftyfive"
+            android:layout_alignBottom="@+id/checkout_image_back_icon"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/checkout_image_back_icon"
+            android:contentDescription="@string/contentDescription"
+            android:src="@drawable/selector_back_btn" />
+
+        <ImageView
+            android:id="@+id/checkout_image_back_icon"
+            android:layout_width="@dimen/ninety"
+            android:layout_height="@dimen/fiftyfive"
+            android:layout_alignParentTop="true"
+            android:layout_margin="@dimen/five"
+            android:layout_toRightOf="@+id/checkout_back_icon"
+            android:contentDescription="@string/contentDescription"
+            android:src="@drawable/selector_logo_btn" />
+
+        <SearchView
+            android:id="@+id/checkout_searchView"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/fiftyfive"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/five"
+            android:maxWidth="@dimen/twohundred"
+            android:visibility="visible" >
+        </SearchView>
+    </RelativeLayout>
+    
+    <Button
+        android:id="@+id/checkout_continue"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/forty"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/five"
+        android:background="@drawable/selector_prospect_save_button"
+        android:gravity="center"
+        android:text="@string/conti"
+        android:textColor="@color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/checkout_continue"
+        android:layout_below="@id/toplinearLayout1"
+        android:orientation="vertical" 
+        >
+
+        <TextView
+            android:id="@+id/chechout_header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/forty"
+            android:layout_margin="@dimen/five"
+            android:background="@drawable/selector_calendar_list_header"
+            android:gravity="center_vertical"
+            android:padding="@dimen/five"
+            android:text="@string/work_description"
+            android:textColor="@color/white"
+            android:visibility="gone" 
+            />
+
+        <EditText
+            android:id="@+id/checkout_dec"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/forty"
+            android:layout_marginLeft="@dimen/five"
+            android:layout_marginRight="@dimen/five"
+            android:background="@drawable/resolve_text_background"
+            android:cursorVisible="false"
+            android:ems="10"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:lines="3"
+            android:padding="@dimen/five"
+            android:visibility="gone" >
+
+            <requestFocus />
+        </EditText>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty" >
+
+            <TextView
+                android:id="@+id/checkout_signature"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty"
+                android:layout_margin="@dimen/five"
+                android:background="@drawable/selector_calendar_list_header"
+                android:gravity="center_vertical"
+                android:padding="@dimen/five"
+                android:text="@string/signature"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/checkout_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/thirty"
+                android:layout_alignRight="@+id/checkout_signature"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/five"
+                android:background="@drawable/customer_attachment_button_background"
+                android:gravity="center"
+                android:text="@string/clear"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/sig_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/onefifty"
+            android:layout_marginLeft="@dimen/five"
+            android:layout_marginRight="@dimen/five"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:visibility="gone" >
+  
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/pen_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/onefifty"
+            android:layout_marginLeft="@dimen/five"
+            android:layout_marginRight="@dimen/five"
+            android:background="@color/gray_list1_bg"
+            android:gravity="center"
+            android:paddingLeft="@dimen/forty"
+            android:paddingRight="@dimen/forty"
+            android:visibility="visible" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="@dimen/five"
+                android:layout_toLeftOf="@+id/signature_image"
+                android:gravity="center"
+                android:hint="@string/signing_here"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <ImageView
+                android:id="@+id/signature_image"
+                android:layout_width="@dimen/hundred20"
+                android:layout_height="@dimen/hundred20"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/app_name"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <CheckBox
+                android:id="@+id/checkout_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ScrollView
+                android:id="@+id/scrollView1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/checkout_checkbox" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/checkoyut_agree"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/five"  />
+                </LinearLayout>
+            </ScrollView>
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

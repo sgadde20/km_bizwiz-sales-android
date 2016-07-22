@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/eighty"
+        android:layout_marginTop="@dimen/three"
+        android:orientation="horizontal"
+        android:weightSum="2" >
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/two"
+            android:layout_weight="1.7"
+            android:background="@drawable/shape_sequal_videos_list_bg"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textViewSequalEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/five"
+                android:layout_marginRight="@dimen/two"
+                android:layout_toRightOf="@+id/imageViewThumnail"
+                android:singleLine="false"
+                android:maxLines="4"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#5e92bd"
+                android:textSize="@dimen/txt14"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imageViewThumnail"
+                android:layout_width="@dimen/eighty"
+                android:layout_height="@dimen/eighty"
+                android:layout_alignParentLeft="true"
+                android:layout_margin="@dimen/five"
+                android:contentDescription="@string/contentDescription"
+                android:src="@drawable/ic_bizwiz_logo" >
+            </ImageView>
+
+            <!-- <ImageView
+                android:id="@+id/imageViewSequalVideoPlay"
+                android:layout_width="@dimen/eighty"
+                android:layout_height="@dimen/eighty"
+                android:layout_alignParentLeft="true"
+                android:layout_margin="@dimen/five"
+                android:contentDescription="@string/contentDescription"
+                android:src="@drawable/ic_play_button" >
+            </ImageView> -->
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/buttonschedule"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/two"
+            android:layout_weight="0.3"
+            android:background="@drawable/selector_prospect_save_button"
+            android:gravity="center"
+            android:text="@string/click_to_schedule"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt16" />
+    </LinearLayout>
+
+</LinearLayout>

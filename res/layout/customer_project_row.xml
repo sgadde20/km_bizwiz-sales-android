@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/layoutContent"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/seventy"
+        android:layout_marginBottom="@dimen/three"
+        android:layout_marginTop="@dimen/three"
+        android:background="@drawable/selector_calendar_list_content"
+        android:baselineAligned="false"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="3" >
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/five"
+            android:layout_marginLeft="@dimen/five"
+            android:layout_marginTop="@dimen/five"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/five" >
+
+            <TextView
+                android:id="@+id/textView_project_id"
+                style="@style/appointments_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue_button_bg"
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:id="@+id/textView_install_date"
+                style="@style/appointments_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView_project_id" />
+
+            <TextView
+                android:id="@+id/textView_install_date1"
+                style="@style/appointments_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView_install_date" />
+
+            <TextView
+                android:id="@+id/textView_install_days"
+                style="@style/appointments_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView_install_date1"
+                android:textColor="@color/black"
+                android:textSize="@dimen/nine" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/five"
+            android:layout_marginTop="@dimen/five"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/five" >
+
+            <TextView
+                android:id="@+id/textView_foremnan"
+                style="@style/appointments_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textview_project_type"
+                android:layout_gravity="center"
+                android:minEms="@integer/ems"
+                android:paddingLeft="@dimen/two"
+                android:paddingRight="@dimen/two"
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:id="@+id/textview_project_type"
+                style="@style/appointments_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:minEms="25"
+                android:textColor="@color/blue_button_bg"
+                android:textStyle="normal|bold" />
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/textView_foremnan"
+                android:layout_toRightOf="@+id/textView_foremnan"
+                android:gravity="center_vertical" >
+
+                <TextView
+                    android:id="@+id/textView_proj_sold"
+                    style="@style/appointments_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sold"
+                    android:textColor="@color/blue_button_bg"
+                    android:textStyle="normal|bold" />
+
+                <TextView
+                    android:id="@+id/textView_due"
+                    style="@style/appointments_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/textView_proj_sold"
+                    android:layout_below="@+id/textView_proj_sold"
+                    android:layout_marginLeft="@dimen/two"
+                    android:text="@string/due"
+                    android:textColor="@color/blue_button_bg"
+                    android:textStyle="normal|bold" />
+
+                <TextView
+                    android:id="@+id/textView_proj_balance"
+                    style="@style/appointments_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/textView_due"
+                    android:layout_alignBottom="@+id/textView_due"
+                    android:layout_alignLeft="@+id/textView_project_amount"
+                    android:textColor="@color/blue_button_bg" />
+
+                <TextView
+                    android:id="@+id/textView_project_amount"
+                    style="@style/appointments_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/textView_due"
+                    android:layout_toRightOf="@+id/textView_proj_sold"
+                    android:textColor="@color/blue_button_bg" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/textView_salesman"
+                style="@style/appointments_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/textView_foremnan"
+                android:minEms="@integer/ems"
+                android:paddingLeft="@dimen/two"
+                android:paddingRight="@dimen/two"
+                android:textStyle="normal|bold" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center" >
+
+    <RelativeLayout
+       android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/fifteen"
+        android:background="@drawable/resolve_background"
+        android:padding="@dimen/twentyfive" >
+
+        <TextView
+            android:id="@+id/appointment_type_header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/thirty"
+            android:layout_marginBottom="@dimen/five"
+            android:layout_marginTop="@dimen/five"
+            android:background="@drawable/shape_settings_header"
+            android:gravity="center_vertical"
+            android:padding="@dimen/five"
+            android:text="@string/appointmenttype"
+            android:textColor="@color/white" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/spinner1"
+            android:layout_below="@+id/spinner1" >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:weightSum="3"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/edit_customer_date_img"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/fiftyfive"
+                    android:layout_weight="1"
+                    android:src="@drawable/selector_date_image_pressed_btn" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:padding="@dimen/five" >
+
+                    <TextView
+                        android:id="@+id/edit_customer_date_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/date"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/edit_appointmant_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/date_background"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/txt12" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:weightSum="3" >
+
+                <ImageView
+                    android:id="@+id/edit_customer_time_img"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/fiftyfive"
+                    android:layout_weight="1"
+                    android:src="@drawable/selector_time_image_pressed_btn" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:padding="@dimen/five" >
+
+                    <TextView
+                        android:id="@+id/edit_customer_time_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/time"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/edit_appointmant_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/date_background"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/txt12" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/appointment_type_header"
+            android:layout_marginBottom="@dimen/ten"
+            android:clickable="false"
+            android:layout_marginTop="@dimen/ten" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/linearLayout1"
+            android:layout_alignParentRight="true"
+            android:weightSum="2"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_below="@+id/linearLayout1" >
+
+            <Button
+                android:id="@+id/edit_appointment_save"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/forty"
+                android:background="@drawable/selector_prospect_save_button"
+                android:text="@string/save"
+                android:layout_weight="1"
+                android:layout_marginRight="@dimen/two"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/edit_appointment_cancel"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/forty"
+                android:background="@drawable/selector_prospect_save_button"
+                android:text="@string/cancel"
+                 android:layout_weight="1"
+                 android:layout_marginLeft="@dimen/two"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

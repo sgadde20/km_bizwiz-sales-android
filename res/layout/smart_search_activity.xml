@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fiftyfive"
+        android:background="@drawable/ic_home_header"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/smart_search_back_icon"
+            android:layout_width="@dimen/sixty"
+            android:layout_height="@dimen/fiftyfive"
+            android:layout_alignBottom="@+id/smart_search_image_back_icon"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/smart_search_image_back_icon"
+            android:contentDescription="@string/contentDescription"
+            android:src="@drawable/selector_back_btn" />
+
+        <ImageView
+            android:id="@+id/smart_search_image_back_icon"
+            android:layout_width="@dimen/ninety"
+            android:layout_height="@dimen/fiftyfive"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/five"
+            android:layout_toRightOf="@+id/smart_search_back_icon"
+            android:contentDescription="@string/contentDescription"
+            android:src="@drawable/selector_logo_btn" />
+
+        <SearchView
+            android:id="@+id/smart_search_searchview"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/fiftyfive"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/five"
+            android:maxWidth="@dimen/twohundred"
+            android:visibility="visible" >
+        </SearchView>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/smart_search_header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/forty"
+        android:text="@string/smart_search"
+        android:background="@drawable/shape_settings_header"
+        android:textColor="@color/white"
+        android:padding="@dimen/five"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/twelve"
+        android:layout_margin="@dimen/five"/>
+
+    <ListView
+        android:id="@+id/smart_search_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="@dimen/three"
+        android:scrollingCache="false" >
+    </ListView>
+
+</LinearLayout>

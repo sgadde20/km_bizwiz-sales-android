@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutContent"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/fiftyfive"
+    android:layout_marginBottom="@dimen/three"
+    android:layout_marginTop="@dimen/three"
+    android:background="@drawable/selector_calendar_list_content"
+    android:baselineAligned="false"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:weightSum="3" >
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/five"
+        android:layout_marginLeft="@dimen/five"
+        android:layout_marginTop="@dimen/five"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/five"
+        android:paddingTop="@dimen/five" >
+
+        <TextView
+            android:id="@+id/textView_note_date"
+            style="@style/appointments_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView_note_time"
+            style="@style/appointments_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView_note_date" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/five"
+        android:layout_marginLeft="@dimen/ten"
+        android:layout_marginTop="@dimen/five"
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/five" >
+
+        <TextView
+            android:id="@+id/textview_name"
+            style="@style/appointments_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView_notes"
+            style="@style/appointments_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textview_name"
+            android:layout_gravity="center" />
+    </RelativeLayout>
+
+</LinearLayout>

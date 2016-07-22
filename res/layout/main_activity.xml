@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fiftyfive"
+        android:background="@drawable/ic_home_header"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/imageView_slider_icon"
+            android:layout_width="@dimen/twentyfive"
+            android:layout_height="@dimen/twentyfive"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/five"
+            android:contentDescription="@string/contentDescription"
+            android:src="@drawable/selector_menu_btn" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="@dimen/ninety"
+            android:layout_height="@dimen/twentyfive"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/five"
+            android:layout_toRightOf="@+id/imageView_slider_icon"
+            android:contentDescription="@string/contentDescription"
+            android:src="@drawable/selector_logo_btn" />
+
+        <SearchView
+            android:id="@+id/searchView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/five"
+            android:maxWidth="@dimen/twohundred" >
+        </SearchView>
+    </RelativeLayout>
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/linearLayout1" >
+
+            <LinearLayout
+                android:id="@+id/linear_main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/oneeighty"
+                    android:layout_marginLeft="@dimen/fifteen"
+                    android:layout_marginRight="@dimen/fifteen"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:weightSum="2" >
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.3"
+                        android:paddingBottom="@dimen/three"
+                        android:paddingTop="@dimen/three" >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginBottom="@dimen/four"
+                            android:gravity="center"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:id="@+id/textView1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/ten"
+                                android:gravity="left"
+                                android:text="@string/my_mtd_sales"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/txt13"
+                                android:textStyle="bold"
+                                android:typeface="sans" />
+
+                            <TextView
+                                android:id="@+id/textView_myMTD"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/ten"
+                                android:gravity="left"
+                                android:text="@string/dash"
+                                android:textColor="@color/blue_button_bg"
+                                android:textSize="@dimen/txt20"
+                                android:textStyle="bold"
+                                android:typeface="sans" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginBottom="@dimen/four"
+                            android:gravity="center"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:id="@+id/textview_appt_type"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/ten"
+                                android:gravity="left"
+                                android:text="@string/my_adl"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/txt13"
+                                android:textStyle="bold"
+                                android:typeface="sans" />
+
+                            <TextView
+                                android:id="@+id/textView_myADL"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/ten"
+                                android:gravity="left"
+                                android:text="@string/dash"
+                                android:textColor="@color/blue_button_bg"
+                                android:textSize="@dimen/txt20"
+                                android:textStyle="bold"
+                                android:typeface="sans" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:gravity="center"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:id="@+id/textView_appt_time"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/ten"
+                                android:gravity="left"
+                                android:text="@string/my_ytd_sales"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/txt13"
+                                android:textStyle="bold"
+                                android:typeface="sans" />
+
+                            <TextView
+                                android:id="@+id/textView_myYTD"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/ten"
+                                android:gravity="left"
+                                android:text="@string/dash"
+                                android:textColor="@color/blue_button_bg"
+                                android:textSize="@dimen/txt20"
+                                android:textStyle="bold"
+                                android:typeface="sans" />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/ten"
+                        android:layout_weight="0.7"
+                        android:gravity="right|center" >
+
+                        <Button
+                            android:id="@+id/button_calendar"
+                            android:layout_width="@dimen/sixty"
+                            android:layout_height="@dimen/sixty"
+                            android:layout_alignParentTop="true"
+                            android:background="@drawable/selector_cal_btn" />
+
+                        <Button
+                            android:id="@+id/button_add_prospect"
+                            android:layout_width="@dimen/sixty"
+                            android:layout_height="@dimen/sixty"
+                            android:layout_alignParentBottom="true"
+                            android:background="@drawable/selector_addprosp_btn" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" >
+
+                    <ListView
+                        android:id="@+id/listView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/eight"
+                        android:cacheColorHint="@android:color/transparent"
+                        android:divider="@android:color/transparent"
+                        android:listSelector="@android:color/transparent" >
+                    </ListView>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/semitransparent_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/semitransparent"
+                android:orientation="vertical"
+                android:visibility="gone" >
+            </LinearLayout>
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/llayoutDrawerLayout"
+            android:layout_width="@dimen/twohundred50"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/rellayoutDrawerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#4E4B4B" >
+
+                <ImageView
+                    android:id="@+id/imageViewUser"
+                    android:layout_width="@dimen/fifty"
+                    android:layout_height="@dimen/fifty"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="@dimen/ten"
+                    android:layout_marginLeft="@dimen/ten"
+                    android:layout_marginTop="@dimen/ten"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_drawer_thumnail" />
+
+                <TextView
+                    android:id="@+id/tv_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/ten"
+                    android:layout_toRightOf="@+id/imageViewUser"
+                    android:text="@string/app_name"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/txt14" />
+            </RelativeLayout>
+
+            <ListView
+                android:id="@+id/left_drawer_list_view"
+                android:layout_width="@dimen/twohundred50"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:choiceMode="singleChoice"
+                android:divider="#3d72a1"
+                android:dividerHeight="1dp"
+                android:listSelector="@drawable/selector_navigation_list" >
+            </ListView>
+        </LinearLayout>
+    </android.support.v4.widget.DrawerLayout>
+
+</LinearLayout>

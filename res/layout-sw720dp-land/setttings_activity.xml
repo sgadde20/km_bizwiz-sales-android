@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fiftyfive"
+        android:background="@drawable/ic_home_header"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/back_icon"
+            android:layout_width="@dimen/sixty"
+            android:layout_height="@dimen/fiftyfive"
+            android:layout_alignBottom="@+id/image_back_icon"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/image_back_icon"
+            android:contentDescription="@string/contentDescription"
+            android:src="@drawable/selector_back_btn" />
+
+        <ImageView
+            android:id="@+id/image_back_icon"
+            android:layout_width="@dimen/ninety"
+            android:layout_height="@dimen/fiftyfive"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/five"
+            android:layout_toRightOf="@+id/back_icon"
+            android:contentDescription="@string/contentDescription"
+            android:src="@drawable/selector_logo_btn" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/twenty"
+        android:layout_margin="@dimen/six"
+        android:background="@drawable/shape_settings_header" >
+
+        <TextView
+            android:id="@+id/textView_settings"
+            style="@style/customer_page_texts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/twelve"
+            android:text="@string/settings"
+            android:textSize="@dimen/txt14" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_appointment"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/twentyfive"
+        android:layout_marginBottom="@dimen/three"
+        android:layout_marginLeft="@dimen/six"
+        android:layout_marginRight="@dimen/six"
+        android:layout_marginTop="@dimen/three"
+        android:background="@drawable/shape_settings"
+        android:padding="@dimen/six" >
+
+        <Switch
+            android:id="@+id/switchAppointments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textAppearance="@style/MySwitch"
+            android:textColor="@color/white"
+            android:textColorHighlight="@color/white"
+            android:textColorLink="@android:color/white"
+            android:textOff="OFF"
+            android:textOn="ON"
+            android:thumb="@drawable/apptheme_switch_inner_holo_light"
+            android:track="@drawable/apptheme_switch_track_holo_light" >
+        </Switch>
+
+        <!-- android:onClick="onCheckboxClicked" -->
+
+        <TextView
+            android:id="@+id/textView_appointments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/six"
+            android:gravity="center_vertical"
+            android:text="@string/appointment_notification"
+            android:textSize="@dimen/txt14" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_add_reminder"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/thirty"
+        android:layout_marginBottom="@dimen/six"
+        android:layout_marginLeft="@dimen/six"
+        android:layout_marginRight="@dimen/six"
+        android:background="@drawable/selectors_reminder_set"
+        android:paddingLeft="@dimen/six"
+        android:paddingRight="@dimen/six"
+        android:visibility="gone" >
+
+        <CheckBox
+            android:id="@+id/checkBox_addre_reminder"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:id="@+id/textView_add_Reminder"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/six"
+            android:layout_toRightOf="@+id/imageview_icon_reminder"
+            android:gravity="center"
+            android:text="@string/add_reminder"
+            android:textSize="@dimen/txt12" />
+
+        <ImageView
+            android:id="@+id/imageview_icon_reminder"
+            android:layout_width="@dimen/twenty"
+            android:layout_height="@dimen/twenty"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/contentDescription"
+            android:src="@drawable/selector_ic_appnt_reminder_pressed_btn" />
+
+        <TextView
+            android:id="@+id/textView_notifyme_appnts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/checkBox_addre_reminder"
+            android:layout_alignTop="@+id/checkBox_addre_reminder"
+            android:layout_toLeftOf="@+id/checkBox_addre_reminder"
+            android:layout_toRightOf="@+id/textView_add_Reminder"
+            android:gravity="center_vertical"
+            android:maxLines="2"
+            android:paddingLeft="@dimen/five"
+            android:paddingRight="@dimen/five"
+            android:textSize="@dimen/txt12" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_followup"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/twentyfive"
+        android:layout_marginBottom="@dimen/three"
+        android:layout_marginLeft="@dimen/six"
+        android:layout_marginRight="@dimen/six"
+        android:layout_marginTop="@dimen/three"
+        android:background="@drawable/shape_settings"
+        android:padding="@dimen/six" >
+
+        <TextView
+            android:id="@+id/textView_followups"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/six"
+            android:layout_marginRight="@dimen/six"
+            android:text="@string/follow_up_notification"
+            android:textSize="@dimen/txt14" />
+
+        <Switch
+            android:id="@+id/switchNotification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textAppearance="@style/MySwitch"
+            android:textColor="@color/white"
+            android:textColorLink="@android:color/white"
+            android:textOff="OFF"
+            android:textOn="ON"
+            android:thumb="@drawable/apptheme_switch_inner_holo_light"
+            android:track="@drawable/apptheme_switch_track_holo_light" >
+        </Switch>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_add_notification"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/thirty"
+        android:layout_marginBottom="@dimen/six"
+        android:layout_marginLeft="@dimen/six"
+        android:layout_marginRight="@dimen/six"
+        android:background="@drawable/selectors_reminder_set"
+        android:paddingLeft="@dimen/six"
+        android:paddingRight="@dimen/six"
+        android:visibility="gone" >
+
+        <CheckBox
+            android:id="@+id/checkBox_add_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:id="@+id/textView_add_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/six"
+            android:layout_toRightOf="@+id/imageview_icon_notification"
+            android:text="@string/add_reminder"
+            android:textSize="@dimen/txt12" />
+
+        <ImageView
+            android:id="@+id/imageview_icon_notification"
+            android:layout_width="@dimen/twenty"
+            android:layout_height="@dimen/twenty"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/contentDescription"
+            android:src="@drawable/ic_follow_reminder" />
+
+        <TextView
+            android:id="@+id/textView_notifyme_followup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/checkBox_add_notification"
+            android:layout_alignTop="@+id/checkBox_add_notification"
+            android:layout_toLeftOf="@+id/checkBox_add_notification"
+            android:layout_toRightOf="@+id/textView_add_notification"
+            android:gravity="center_vertical"
+            android:maxLines="2"
+            android:paddingLeft="@dimen/five"
+            android:paddingRight="@dimen/five"
+            android:textSize="@dimen/txt12" />
+    </RelativeLayout>
+<RelativeLayout
+        android:id="@+id/layout_price_display"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/twentyfive"
+        android:layout_margin="@dimen/six"
+        android:background="@drawable/shape_settings"
+        android:padding="@dimen/six" >
+
+        <TextView
+            android:id="@+id/textView_price_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/six"
+            android:layout_marginRight="@dimen/six"
+            android:text="@string/price_info"
+            android:textSize="@dimen/txt14" />
+
+        <Switch
+            android:id="@+id/switch_price_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textAppearance="@style/MySwitch"
+            android:textColor="@color/white"
+            android:textColorLink="@android:color/white"
+            android:textOff="HIDE"
+            android:textOn="SHOW"
+            android:thumb="@drawable/apptheme_switch_inner_holo_light"
+            android:track="@drawable/apptheme_switch_track_holo_light" >
+        </Switch>
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/layout_auto_sync_display"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/forty"
+        android:layout_margin="@dimen/six"
+        android:background="@drawable/shape_settings"
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="horizontal"
+        android:weightSum="2" >
+
+        <TextView
+            android:id="@+id/textView_auto_sync_display"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/twelve"
+            android:layout_marginRight="@dimen/six"
+            android:layout_weight="1"
+            android:text="@string/auto_sync"
+            android:textSize="@dimen/txt14" />
+
+        <Spinner
+            android:id="@+id/autoSyncSpinner"
+            style="@android:style/Widget.Spinner.DropDown"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/six"
+            android:layout_marginRight="@dimen/six"
+            android:layout_weight="1"
+           android:gravity="center"
+            android:textColor="@color/add_prospect_text_color" 
+            android:layout_marginTop="@dimen/one"/>
+       
+    </LinearLayout>
+     <LinearLayout
+        android:id="@+id/layout_picker"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/five"
+        android:background="@color/settings_cell"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/imageView_close"
+            android:layout_width="@dimen/thirty"
+            android:layout_height="@dimen/thirty"
+            android:layout_marginTop="@dimen/five"
+            android:contentDescription="@string/contentDescription"
+            android:paddingLeft="@dimen/five"
+            android:src="@drawable/selector_close_phonenumber" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/eight"
+                android:text="@string/days"
+                android:textColor="@color/black"
+                android:textSize="@dimen/txt25" />
+
+            <NumberPicker
+                android:id="@+id/numberPicker_days"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/eight"
+                android:text="@string/hours"
+                android:textColor="@color/black"
+                android:textSize="@dimen/txt25" />
+
+            <NumberPicker
+                android:id="@+id/numberPicker_hours"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/eight"
+                android:text="@string/minte"
+                android:textColor="@color/black"
+                android:textSize="@dimen/txt25" />
+
+            <NumberPicker
+                android:id="@+id/numberPicker_min"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/textView_done"
+            android:layout_width="@dimen/thirty"
+            android:layout_height="@dimen/thirty"
+            android:layout_marginTop="@dimen/five"
+            android:contentDescription="@string/contentDescription"
+            android:paddingRight="@dimen/ten"
+            android:src="@drawable/selector_ic_done_pressed_btn" />
+    </LinearLayout>
+
+</LinearLayout>
+    

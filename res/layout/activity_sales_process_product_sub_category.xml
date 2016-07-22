@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fiftyfive"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/ic_home_header"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/back_icon"
+            android:layout_width="@dimen/sixty"
+            android:layout_height="@dimen/fiftyfive"
+            android:layout_alignBottom="@+id/image_back_icon"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/image_back_icon"
+            android:contentDescription="@string/contentDescription"
+            android:src="@drawable/selector_back_btn" />
+
+        <ImageView
+            android:id="@+id/image_back_icon"
+            android:layout_width="@dimen/ninety"
+            android:layout_height="@dimen/fiftyfive"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/five"
+            android:layout_toRightOf="@+id/back_icon"
+            android:contentDescription="@string/contentDescription"
+            android:src="@drawable/selector_logo_btn" />
+
+        <SearchView
+            android:id="@+id/sales_process_searchView"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/fiftyfive"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/five"
+            android:maxWidth="@dimen/twohundred"
+            android:visibility="visible" >
+        </SearchView>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutCatHeader"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/forty"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_margin="@dimen/five"
+        android:background="@drawable/selector_calendar_list_header"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textViewCategoryName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/ten"
+            android:gravity="center|left"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt14" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layoutfilter"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/forty"
+        android:layout_below="@+id/layoutCatHeader"
+        android:layout_margin="@dimen/five"
+        android:background="@drawable/shape_main_list_row_sel" >
+
+        <ImageView
+            android:id="@+id/imageViewFilter"
+            android:layout_width="@dimen/thirty"
+            android:layout_height="@dimen/thirty"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="@dimen/five"
+            android:layout_marginLeft="@dimen/fifteen"
+            android:layout_marginRight="@dimen/five"
+            android:layout_marginTop="@dimen/five"
+            android:contentDescription="@string/contentDescription"
+            android:src="@drawable/selector_filter_icon" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/imageViewFilter"
+            android:text="@string/filter"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt14" />
+
+        <EditText
+            android:id="@+id/editTextfilter"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/five"
+            android:layout_toRightOf="@+id/textView2"
+            android:background="@drawable/ic_filter_edittext_bg"
+            android:ems="10"
+            android:imeOptions="actionGo"
+            android:inputType="textPostalAddress"
+            android:paddingLeft="@dimen/ten" >
+        </EditText>
+    </RelativeLayout>
+
+  <ListView
+        android:id="@+id/listViewsubCategory"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/button_generate_proposal"
+        android:layout_below="@+id/layoutfilter"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/five"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@android:color/transparent"
+        android:listSelector="@android:color/transparent" >
+    </ListView>
+
+    <Button
+        android:id="@+id/button_generate_proposal"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/forty"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:textSize="@dimen/txt18"
+        android:layout_margin="@dimen/five"
+        android:background="@drawable/selector_prospect_save_button"
+        android:text="@string/generate_proposal" />
+
+</RelativeLayout>

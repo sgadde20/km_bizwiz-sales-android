@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/linearLayoutMonthView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/ten"
+        android:background="@drawable/shape_calendar_dialog_bg"
+        android:gravity="center"
+        android:paddingLeft="@dimen/three"
+        android:paddingRight="@dimen/one" >
+
+        <LinearLayout
+            android:id="@+id/layoutCalendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/eight"
+            android:paddingRight="@dimen/eight" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/eighty"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                 <Spinner
+                    android:id="@+id/spinner_appts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/three" />
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:gravity="center"
+                    android:textColor="@color/calrndar_day_text_color"
+                    android:textSize="@dimen/txt14"
+                    android:layout_margin="@dimen/three" />
+               
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/header"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <GridView
+                    android:id="@+id/gridViewdays"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:isScrollContainer="false"
+                    android:listSelector="@android:color/transparent"
+                    android:numColumns="7"
+                    android:stretchMode="columnWidth" >
+                </GridView>
+            </LinearLayout>
+
+            <ViewFlipper
+                android:id="@+id/viewFlipper1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <GridView
+                    android:id="@+id/gridview"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:isScrollContainer="false"
+                    android:listSelector="@android:color/transparent"
+                    android:numColumns="7"
+                    android:stretchMode="columnWidth" />
+            </ViewFlipper>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layoutCalendar"
+            android:paddingRight="@dimen/five"
+            android:paddingLeft="@dimen/three"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="2" >
+
+            <Button
+                android:id="@+id/buttonscheduledate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/five"
+                android:layout_marginRight="@dimen/five"
+                android:layout_marginBottom="@dimen/five"
+                android:layout_marginTop="@dimen/five"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="@dimen/txt14"
+                android:background="@drawable/selector_prospect_save_button"
+                android:text="@string/schedule"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/buttoncancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/five"
+                android:layout_marginRight="@dimen/five"
+                android:layout_marginBottom="@dimen/five"
+                android:layout_marginTop="@dimen/five"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="@dimen/txt14"
+                android:background="@drawable/selector_prospect_save_button"
+                android:text="@string/cancel"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true"><shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+            <gradient android:angle="270" android:centerColor="@color/settings_reminder_select" android:endColor="@color/settings_reminder_select" android:startColor="@color/settings_reminder_select" />
+
+            <corners android:radius="4dp" />
+        </shape></item>
+    <item android:state_activated="true"><shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+            <gradient android:angle="270" android:centerColor="@color/settings_reminder_select" android:endColor="@color/settings_reminder_select" android:startColor="@color/settings_reminder_select" />
+
+            <corners android:radius="4dp" />
+        </shape></item>
+    <item><shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+            <gradient android:angle="270" android:centerColor="@color/reminder_cell" android:endColor="@color/reminder_cell" android:startColor="@color/reminder_cell" />
+
+            <corners android:radius="4dp" />
+        </shape></item>
+
+</selector>

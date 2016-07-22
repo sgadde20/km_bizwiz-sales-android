@@ -1,0 +1,72 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="one">1dp</dimen>
+    <dimen name="two">2dp</dimen>
+    <dimen name="three">3dp</dimen>
+    <dimen name="four">4dp</dimen>
+    <dimen name="five">5dp</dimen>
+    <dimen name="six">6dp</dimen>
+    <dimen name="nine">9dp</dimen>
+    <dimen name="eight">8dp</dimen>
+    <dimen name="ten">10dp</dimen>
+    <dimen name="twelve">12dp</dimen>
+    <dimen name="thirteen">13dp</dimen>
+    <dimen name="fifteen">15dp</dimen>
+    <dimen name="twenty">20dp</dimen>
+    <dimen name="twentyfive">25dp</dimen>
+    <dimen name="thirty">30dp</dimen>
+    <dimen name="thirtyfive">35dp</dimen>
+    <dimen name="forty">40dp</dimen>
+    <dimen name="fortyfive">45dp</dimen>
+    <dimen name="fifty">50dp</dimen>
+    <dimen name="fiftyfive">55dp</dimen>
+    <dimen name="sixty">60dp</dimen>
+    <dimen name="sixty_new">60dp</dimen>
+    <dimen name="seventy">70dp</dimen>
+    <dimen name="eighty">80dp</dimen>
+     <dimen name="eightyfive">85dp</dimen>
+    <dimen name="onefifty">150dp</dimen>
+    <dimen name="one40">140dp</dimen>
+    <dimen name="one45">145dp</dimen>
+    <dimen name="oneeighty">180dp</dimen>
+    <dimen name="twohundred">200dp</dimen>
+    <dimen name="twotwenty">220dp</dimen>
+    <dimen name="twofourty">240dp</dimen>
+    <dimen name="hundred">100dp</dimen>
+    <dimen name="hundred8">108dp</dimen>
+    <dimen name="hundred10">110dp</dimen>
+    <dimen name="hundred20">120dp</dimen>
+    <dimen name="hundred30">130dp</dimen>
+    <dimen name="twohundred50">250dp</dimen>
+    <dimen name="twohundred90">290dp</dimen>
+    <dimen name="threehundred">300dp</dimen>
+    <dimen name="threehundred20">320dp</dimen>
+    <dimen name="fourhundred">400dp</dimen>
+    <dimen name="ninety">90dp</dimen>
+    <dimen name="ninetyfive">95dp</dimen>
+    <dimen name="txt5">5sp</dimen>
+    <dimen name="txt7">7sp</dimen>
+    <dimen name="txt8">8sp</dimen>
+    <dimen name="txt9">9sp</dimen>
+    <dimen name="txt10">10sp</dimen>
+    <dimen name="txt11">11sp</dimen>
+    <dimen name="txt12">12sp</dimen>
+    <dimen name="txt13">13sp</dimen>
+    <dimen name="txt14">14sp</dimen>
+    <dimen name="txt16">16sp</dimen>
+    <dimen name="txt18">18sp</dimen>
+    <dimen name="txt15">15sp</dimen>
+    <dimen name="txt20">20sp</dimen>
+    <dimen name="txt22">22sp</dimen>
+    <dimen name="txt25">25sp</dimen>
+    <dimen name="fivehundred">500dp</dimen>
+
+    <integer name="ems">10</integer>
+
+    <dimen name="twentytwo">22dp</dimen>
+    <dimen name="twentyeight">28dp</dimen>
+    <dimen name="twentyseven">27dp</dimen>
+    <dimen name="sevnteen">17dp</dimen>
+
+</resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linear1"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/sixty"
+    android:layout_margin="@dimen/five"
+    android:background="@drawable/shape_month_view_row"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="@dimen/ten" >
+
+    <TextView
+        android:id="@+id/type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/button_phone_call"
+        android:layout_width="@dimen/forty"
+        android:layout_height="@dimen/forty"
+        android:background="@drawable/selector_ic_call_button_pressed_btn"
+        android:focusable="false"
+        android:gravity="center" />
+
+</LinearLayout>

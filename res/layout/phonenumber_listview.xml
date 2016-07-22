@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <RelativeLayout
+        android:id="@+id/phonenumber_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/two"
+        android:background="@drawable/resolve_background" >
+
+        <ListView
+            android:id="@+id/phonenumber_listview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/add_layout"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_marginRight="@dimen/ten"
+            android:background="@android:color/transparent"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@null"
+            android:dividerHeight="@dimen/two"
+            android:fadingEdge="none"
+            android:listSelector="@android:color/transparent"
+            android:paddingLeft="@dimen/ten"
+            android:paddingRight="@dimen/ten"
+            android:paddingTop="@dimen/twenty"
+            android:scrollbars="none"
+            android:visibility="gone" >
+
+        </ListView>
+
+        <LinearLayout
+            android:id="@+id/add_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/forty"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/twenty"
+            android:layout_marginRight="@dimen/twenty"
+            android:layout_marginTop="@dimen/five"
+            android:layout_marginBottom="@dimen/twenty"
+            android:weightSum="2"
+            android:orientation="horizontal" >
+            
+            <Button
+                android:id="@+id/phonenumber_add_btn"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/forty"
+                android:layout_marginRight="@dimen/three"
+                android:layout_weight="1.3"
+                android:background="@drawable/selector_prospect_save_button_new"
+                android:text="@string/add_new_contact"
+                android:singleLine="true"
+                android:textColor="@color/white" />
+
+            <Button 
+                 android:id="@+id/button_phonenumber_cancel"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/forty"
+             android:background="@drawable/selector_prospect_save_button"
+             android:layout_marginLeft="@dimen/three"
+             android:text="@string/cancel"
+              android:textColor="@color/white"
+             android:layout_weight="0.7"/>
+            </LinearLayout>
+
+        <TextView
+            android:id="@+id/no_number_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/forty"
+            android:layout_alignLeft="@+id/add_layout"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/add_layout"
+            android:layout_marginTop="@dimen/twenty"
+            android:background="@drawable/resolve_text_background"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="No Contacts"
+            android:visibility="visible" />
+
+    </RelativeLayout>
+
+    <!-- <Button
+        android:id="@+id/button_phonenumber_cancel"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="@dimen/forty"
+        android:layout_height="@dimen/forty"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_below="@+id/button_phonenumber_cancel"
+        android:background="@drawable/ic_notes_cancel_button"
+        android:gravity="right" /> -->
+
+</RelativeLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/layoutfilter"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/sixty"
+        android:layout_marginBottom="@dimen/five"
+        android:layout_marginTop="@dimen/five"
+        android:background="@drawable/selector_calendar_list_content" >
+
+        <ImageView
+            android:id="@+id/imageViewMaterial"
+            android:layout_width="@dimen/fortyfive"
+            android:layout_height="@dimen/fortyfive"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="@dimen/five"
+            android:layout_marginLeft="@dimen/fifteen"
+            android:layout_marginRight="@dimen/five"
+            android:layout_marginTop="@dimen/five"
+            android:contentDescription="@string/contentDescription" />
+
+        <TextView
+            android:id="@+id/textViewMaterialName"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/five"
+            android:layout_toLeftOf="@+id/textViewProposalAmount"
+            android:layout_toRightOf="@+id/imageViewMaterial"
+            android:ellipsize="end"
+            android:gravity="center|left"
+            android:maxLines="2"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt13" />
+
+        <TextView
+            android:id="@+id/textViewProposalAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/fifteen"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/calrndar_day_text_color"
+            android:textSize="@dimen/txt13" />
+    </RelativeLayout>
+
+</LinearLayout>

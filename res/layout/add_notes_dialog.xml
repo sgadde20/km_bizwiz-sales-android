@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/layout_addnotes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="@dimen/ten"
+        android:background="@drawable/resolve_background"
+        android:padding="@dimen/twentyfive" >
+
+        <TextView
+            android:id="@+id/text_addcustomernotes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_new_customer_note"
+            android:textColor="#2b5b82"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textreferenceto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_addcustomernotes"
+            android:layout_marginTop="@dimen/five"
+            android:background="@drawable/shape_settings_header"
+            android:padding="@dimen/five"
+            android:text="@string/referenceto"
+            android:textColor="@color/white"
+            android:textSize="@dimen/twelve" />
+
+        <Spinner
+            android:id="@+id/spinner1"
+            style="@style/DropDownNav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textreferenceto"
+            android:layout_marginTop="@dimen/five" />
+
+        <Spinner
+            android:id="@+id/spinner2"
+            style="@style/DropDownNav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spinner1"
+            android:layout_marginTop="@dimen/five"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/textnotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spinner2"
+            android:layout_marginTop="@dimen/five"
+            android:background="@drawable/shape_settings_header"
+            android:padding="@dimen/five"
+            android:text="@string/notes_title"
+            android:textColor="@color/white"
+            android:textSize="@dimen/twelve" />
+
+        <EditText
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/threehundred"
+            android:layout_above="@+id/button_save"
+            android:layout_below="@+id/textnotes"
+            android:layout_marginTop="@dimen/five"
+            android:background="@drawable/resolve_text_background"
+            android:ellipsize="start"
+            android:gravity="top"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:padding="@dimen/five" />
+
+        <Button
+            android:id="@+id/button_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/five"
+            android:background="@drawable/selector_prospect_save_button"
+            android:text="@string/save"
+            android:textColor="@color/gray_list1_bg" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/add_notes_close_btn"
+        android:layout_width="@dimen/forty"
+        android:layout_height="@dimen/forty"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/ic_notes_cancel_button"
+        android:gravity="right" />
+
+</RelativeLayout>
