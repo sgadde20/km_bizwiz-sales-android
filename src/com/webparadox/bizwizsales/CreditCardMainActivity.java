@@ -19,6 +19,16 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
+import com.ePN.AndroidSDK.ePNAudioDevice;
+import com.ePN.AndroidSDK.ePNBTDevice;
+import com.ePN.AndroidSDK.ePNBTiMixPay;
+import com.ePN.AndroidSDK.ePNHttpPost;
+import com.ePN.AndroidSDK.ePNiMagPro;
+import com.webparadox.bizwizsales.helper.CCTypesHandler;
+import com.webparadox.bizwizsales.helper.ServiceHelper;
+import com.webparadox.bizwizsales.libraries.ActivityIndicator;
+import com.webparadox.bizwizsales.libraries.Constants;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
@@ -53,15 +63,6 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ePN.AndroidSDK.ePNAudioDevice;
-import com.ePN.AndroidSDK.ePNBTDevice;
-import com.ePN.AndroidSDK.ePNBTiMixPay;
-import com.ePN.AndroidSDK.ePNHttpPost;
-import com.ePN.AndroidSDK.ePNiMagPro;
-import com.webparadox.bizwizsales.helper.CCTypesHandler;
-import com.webparadox.bizwizsales.helper.ServiceHelper;
-import com.webparadox.bizwizsales.libraries.ActivityIndicator;
-import com.webparadox.bizwizsales.libraries.Constants;
 
 public class CreditCardMainActivity extends Activity implements OnClickListener {
 	ImageView imgBack, imgHome;
@@ -88,8 +89,8 @@ public class CreditCardMainActivity extends Activity implements OnClickListener 
 	ScrollView scrollview;
 	Dialog mSwiperDialog;
 	TextView timerCount, txtDialogSwiperStatus, txtDialogSwipeMessage;
-	ePNBTiMixPay swipeController = null;
-	ePNAudioDevice swipeController1 = null;
+	ePNBTDevice newSwipeController = null;
+	ePNAudioDevice swipeController = null;
 	boolean isPostTransCompleted = false;
 	String status = "";
 	String addressVerify = "";
@@ -105,6 +106,8 @@ public class CreditCardMainActivity extends Activity implements OnClickListener 
 	AddCustomerToCDMTask addCustomerToCDMTask;
 	String strPhone = "";
 	boolean isBTDeviceConnected = false;
+	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -125,11 +128,13 @@ public class CreditCardMainActivity extends Activity implements OnClickListener 
 		// if (swipeController != null){
 		// swipeController.onStop();
 		// }
-		swipeController1 = new ePNiMagPro(this, mHandler, dealerAccountNumber,
+		/*swipeController1 = new ePNiMagPro(this, mHandler, dealerAccountNumber,
 				dealerSecurityKey);
 		swipeController = new ePNBTiMixPay(this, mHandler, dealerAccountNumber,
 				dealerSecurityKey);
-		swipeController.startBluetoothDiscovery();
+		swipeController.startBluetoothDiscovery();*/
+		
+		swipeController = new ePNiMagPro(this, mHandler,dealerAccountNumber, dealerSecurityKey);
 		serviceHelper = new ServiceHelper(CreditCardMainActivity.this);
 		userData = getSharedPreferences(Constants.SHARED_PREFERENCE_NAME, 0);
 		dealerID = userData.getString(Constants.KEY_LOGIN_DEALER_ID, "");
@@ -297,13 +302,21 @@ public class CreditCardMainActivity extends Activity implements OnClickListener 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if (mSwiperDialog != null) {
-					if (mSwiperDialog.isShowing()) {
+				if(swipeController.isConnected())
+				{
+					deviceConnected();
+				}
+				else if(newSwipeController.isConnected())
+				{
+				  
+				  newSwipeController.closeBTReader();
+				  newSwipeController.onStop();
+				}
 						mSwiperDialog.dismiss();
 						timerCount.setText("");
 						swipeTimer.cancel();
 						swipeTimer = null;
-						swipeOrientation(1);
+						//swipeOrientation(1);
 						if (swipeProceed.getText().toString().equalsIgnoreCase("next")) {
 							transId = transId.replace(",", "");
 							transId = transId.replace(" ", "");
@@ -316,8 +329,7 @@ public class CreditCardMainActivity extends Activity implements OnClickListener 
 							finish(); 
 						}
 					}
-				}
-			}
+			
 		});
 
 		ImageView deleteButton = (ImageView) mSwiperDialog
@@ -338,6 +350,25 @@ public class CreditCardMainActivity extends Activity implements OnClickListener 
 				swipeTimer = null;
 			}
 		});
+		
+	/*	if (Utilities.isNetAvailable(getApplicationContext())) {
+			callCCTypeWebservice();
+		} else {
+			OfflineManager presentationParser = OfflineManager.getInstance(CreditCardMainActivity.this);
+			ArrayList<CCTypeModel> cctArray = presentationParser.retrieveCreditCardTypes();
+			Singleton.getInstance().ccTypeArray.clear();
+			if (cctArray.size() > 0) {
+				for (int i = 0; i < cctArray.size(); i++) {
+					CCTypeModel cCTypeModel = new CCTypeModel();
+					cCTypeModel.Id = cctArray.get(i).Id;
+					cCTypeModel.CreditCardType = cctArray.get(i).CreditCardType;
+					cCTypeModel.IsDeleted = cctArray.get(i).IsDeleted;
+					cCTypeModel.Ordinal = cctArray.get(i).Ordinal;
+					Singleton.getInstance().ccTypeArray.add(cCTypeModel);
+				}
+			}
+		}
+		client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();  */
 	}
 
 	enum PaymentServices {
@@ -543,19 +574,25 @@ public class CreditCardMainActivity extends Activity implements OnClickListener 
 					swipeController
 					.setZip(editTextZipCode.getText().toString());
 					
+					newSwipeController = new ePNBTiMixPay(this, btHandler, dealerAccountNumber,
+							dealerSecurityKey);
+					
+					
+					
+					
 					//This is for Audio device
-					swipeController1.setAmount(stramount);
-					swipeController1.setInv("" + customerId);
-					swipeController1
+					newSwipeController.setAmount(stramount);
+					newSwipeController.setInv("" + customerId);
+					newSwipeController
 					.setEmail(editTextEmail.getText().toString());
-					swipeController1.setFirstName(editTextName.getText()
+					newSwipeController.setFirstName(editTextName.getText()
 							.toString());
-					swipeController1.setAddress(editTextAddress.getText()
+					newSwipeController.setAddress(editTextAddress.getText()
 							.toString());
-					swipeController1.setCity(editTextCity.getText().toString());
-					swipeController1
+					newSwipeController.setCity(editTextCity.getText().toString());
+					newSwipeController
 					.setState(editTextState.getText().toString());
-					swipeController1
+					newSwipeController
 					.setZip(editTextZipCode.getText().toString());
 
 					// Singleton.getInstance().swipeController.getImagPro().setAmount(stramount);
@@ -572,6 +609,8 @@ public class CreditCardMainActivity extends Activity implements OnClickListener 
 						txtDialogSwipeMessage.setText("Please connect the ePN device");
 						txtDialogSwipeMessage.setTextColor(Color.RED);
 					}
+					
+					newSwipeController.startBluetoothDiscovery();
 
 					startCountdown();
 				} else {
@@ -619,25 +658,33 @@ public class CreditCardMainActivity extends Activity implements OnClickListener 
 	}
 
 	public void startCountdown() {
-		swipeTimer = new CountDownTimer(60000, 1000) {
+		swipeTimer = new CountDownTimer(120000, 2000) {
 
 			public void onTick(long millisUntilFinished) {
 				if (isPostTransCompleted) {
 					timerCount.setText("");
 				} else {
-					timerCount.setText("" + millisUntilFinished / 1000);
+					timerCount.setText("" + millisUntilFinished / 2000);
 				}
 			}
 
 			public void onFinish() {
 				timerCount.setText("");
 				if (!isPostTransCompleted) {
-					if (mSwiperDialog != null) {
+					mSwiperDialog.dismiss();
+
+					if(swipeController.isConnected()){
+						swipeController.onStop();
+					}
+					if (newSwipeController.isConnected()) {
+						newSwipeController.closeBTReader();
+						newSwipeController.onStop();
+					}
+					/*if (mSwiperDialog != null) {
 						if (mSwiperDialog.isShowing()) {
 							mSwiperDialog.dismiss();
-							swipeOrientation(1);
 						}
-					}
+					}*/
 				}
 			}
 		}.start();
@@ -703,6 +750,139 @@ public class CreditCardMainActivity extends Activity implements OnClickListener 
 			return false;
 		}
 	}
+	
+	
+	/*
+	 * This is the Handler that is passed when we initialized the ePNAudioDevice
+	 * object. It will receive all messages that are returned
+	 */
+	private final Handler mHandler = new Handler() {
+
+		@Override
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+				case ePNAudioDevice.MESSAGE_SWIPER_CONNECTED: // Received when a
+					// swiper is
+					// connected
+
+					deviceConnected();
+					break;
+
+				case ePNAudioDevice.MESSAGE_SWIPER_DISCONNECTED: // Received when a
+					// swiper is
+					// disconnected
+					deviceDisconnected();
+					break;
+
+				case ePNAudioDevice.MESSAGE_DID_RECEIVE_SWIPE: // Received when a
+					// swiper has
+					// successfully read
+					// a card
+					didReceiveSwipe("Swipe Successful");
+					break;
+
+				case ePNAudioDevice.MESSAGE_DID_POST_XACT: // Received when a
+					// transaction that was
+					// posted receives a
+					// response
+					didPostTransaction((String) msg.obj);
+					break;
+
+				case ePNAudioDevice.MESSAGE_DID_RECEIVE_CARD_DATA: // Received when
+					// a request for
+					// the card data
+					// has been made
+					didReceiveCardData((String) msg.obj);
+			}
+		}
+	};
+
+	/*
+	 * This is the Handler that is passed when we initialized the ePNAudioDevice
+	 * object. It will receive all messages that are returned
+	 */
+	private final Handler btHandler = new Handler() {
+
+		@Override
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+
+				/*case ePNAudioDevice.MESSAGE_SWIPER_CONNECTED:
+					// Received when a audio swiper is connected
+
+					deviceConnected();
+					break;
+
+				case ePNAudioDevice.MESSAGE_SWIPER_DISCONNECTED:
+					// Received when a audio swiper is disconnected
+					deviceDisconnected();
+					break;*/
+
+				case ePNBTDevice.BLUETOOTH_STARTED_DISCOVERY:
+					displayStatus("Trying to connect", " ePN device is not ready to use");
+					break;
+
+				case ePNBTDevice.BLUETOOTH_FINISHED_DISCOVERY:
+
+					break;
+
+				case ePNBTDevice.BLUETOOTH_DEVICE_FOUND:
+
+					if (((BluetoothDevice) msg.obj).getName() != null) {
+						Log.d("Device Name", ((BluetoothDevice) msg.obj).getName());
+					}
+
+					if ((((BluetoothDevice) msg.obj).getName() != null)
+							&& ((BluetoothDevice) msg.obj).getName().startsWith("EPNB")) {
+						newSwipeController.connectToReader((BluetoothDevice) msg.obj);
+					}
+					break;
+
+
+
+				case ePNBTiMixPay.BLUETOOTH_SWIPER_CONNECTED:
+					// Received when a bluetooth swiper is connected
+
+					isBTDeviceConnected = true;
+					deviceConnected();
+					break;
+
+				case ePNBTiMixPay.BLUETOOTH_SWIPER_DISCONNECTED: // Received when a
+					// swiper is
+					// disconnected
+					isBTDeviceConnected = false;
+					deviceDisconnected();
+					break;
+
+
+
+				case ePNBTiMixPay.BLUETOOTH_DID_RECEIVE_SWIPE: // Received when a
+					// swiper has
+					// successfully read
+					// a card
+					didReceiveSwipe("Swipe Successful");
+					break;
+
+				case ePNAudioDevice.MESSAGE_DID_RECEIVE_SWIPE:
+					// Received when audio swiper successfully read a card
+					didReceiveSwipe("Swipe Successful");
+					break;
+
+				case ePNAudioDevice.MESSAGE_DID_POST_XACT: // Received when a
+					// transaction that was
+					// posted receives a
+					// response
+					didPostTransaction((String) msg.obj);
+					break;
+
+				case ePNAudioDevice.MESSAGE_DID_RECEIVE_CARD_DATA: // Received when
+					// a request for
+					// the card data
+					// has been made
+					didReceiveCardData((String) msg.obj);
+			}
+		}
+	};
 
 	private void gotoHomeActivity() {
 		// TODO Auto-generated method stub
@@ -820,78 +1000,12 @@ public class CreditCardMainActivity extends Activity implements OnClickListener 
 	 * This is the Handler that is passed when we initialized the ePNAudioDevice
 	 * object. It will receive all messages that are returned
 	 */
-	private final Handler mHandler = new Handler() {
-
-		@Override
-		public void handleMessage(Message msg) {
-			switch (msg.what) {
-			case ePNBTDevice.BLUETOOTH_STARTED_DISCOVERY:
-				Log.i("Bluetooth", "Bluetooth discovery started");
-				break;
-			
-			case ePNBTDevice.BLUETOOTH_FINISHED_DISCOVERY:
-				Log.i("Bluetooth", "Bluetooth discovery Ended");
-				break;
-			
-			case ePNBTDevice.BLUETOOTH_DEVICE_FOUND:
-				Log.i("Bluetooth", "Bluetooth device found");
-				if(!isBTDeviceConnected) {
-					swipeController.connectToReader((BluetoothDevice)msg.obj);
-				}
-				break;
-			
-			case ePNAudioDevice.MESSAGE_SWIPER_CONNECTED:
-				// Received when a audio swiper is connected
-				Log.i("iMagPay", "Received AudioDevice Swiper Connected");
-				deviceConnected();
-				break;
-				
-			case ePNBTDevice.BLUETOOTH_SWIPER_CONNECTED: 
-				// Received when a bluetooth swiper is connected
-				Log.i("iMagPay", "Received BluetoothDevice Swiper Connected");
-				isBTDeviceConnected = true;
-				deviceConnected();
-				break;
-
-			case ePNBTDevice.BLUETOOTH_SWIPER_DISCONNECTED: // Received when a
-				// swiper is
-				// disconnected
-				isBTDeviceConnected = false;
-				deviceDisconnected();
-				break;
-				
-			case ePNAudioDevice.MESSAGE_SWIPER_DISCONNECTED:
-				// Received when a audio swiper is disconnected
-				deviceDisconnected();
-				break;
-
-			case ePNBTDevice.BLUETOOTH_DID_RECEIVE_SWIPE: // Received when a
-				// swiper has
-				// successfully read
-				// a card
-				didReceiveSwipe("Swipe Successful");
-				break;
-				
-			case ePNAudioDevice.MESSAGE_DID_RECEIVE_SWIPE:
-				// Received when audio swiper successfully read a card
-				didReceiveSwipe("Swipe Successful");
-				break;
-
-			case ePNAudioDevice.MESSAGE_DID_POST_XACT: // Received when a
-				// transaction that was
-				// posted receives a
-				// response
-				didPostTransaction((String) msg.obj);
-				break;
-
-			case ePNAudioDevice.MESSAGE_DID_RECEIVE_CARD_DATA: // Received when
-				// a request for
-				// the card data
-				// has been made
-				didReceiveCardData((String) msg.obj);
-			}
-		}
-	};
+	public void displayStatus(String status, String statusMessage) {
+		Log.i("DeviceConnected", "" + status);
+		txtDialogSwiperStatus.setText(": " + status);
+		txtDialogSwipeMessage.setText(statusMessage);
+		txtDialogSwipeMessage.setTextColor(Color.GREEN);
+	}
 
 	public void deviceConnected() {
 		// TODO Auto-generated method stub
@@ -927,21 +1041,19 @@ public class CreditCardMainActivity extends Activity implements OnClickListener 
 					.setText("Swipe successful, transaction initiated");
 					txtDialogSwipeMessage.setTextColor(Color.GREEN);
 					isPostTransCompleted = true;
-					if (mSwiperDialog != null) {
-						if (mSwiperDialog.isShowing()) {
-							// Check which device is connected and call the method
-							if(isBTDeviceConnected) {
-								swipeController.getCardInfo();
-							}
-							else {
-								swipeController1.getCardInfo();
-							}
+					if (mSwiperDialog.isShowing()) {
+						if (!isBTDeviceConnected) {
+							swipeController.getCardInfo();
+						} else {
+							newSwipeController.getCardInfo();
 						}
 					}
+
 				}
 			}
 		});
 	}
+
 
 	@SuppressLint("DefaultLocale")
 	public void didReceiveCardData(String response) {
@@ -995,11 +1107,11 @@ public class CreditCardMainActivity extends Activity implements OnClickListener 
 				txtDialogSwipeMessage.setTextColor(Color.GREEN);
 				Log.d("Inv class = ", "" + customerId);
 				// Check which device is connected and call the method
-				if(isBTDeviceConnected) {
+				if(!isBTDeviceConnected) {
 					swipeController.postTransaction();
 				}
 				else {
-					swipeController1.postTransaction();
+					newSwipeController.postTransaction();
 				}
 			}
 		}
@@ -1066,10 +1178,73 @@ public class CreditCardMainActivity extends Activity implements OnClickListener 
 					txtDialogSwipeMessage.setText("Processing failed");
 					txtDialogSwipeMessage.setTextColor(Color.RED);
 				}
+				swipeProceed.setVisibility(View.VISIBLE);
 			}
 		});
 	}
+	
+	@Override
+	public void onStart() {
 
+		super.onStart();
+
+		if (swipeController != null)
+			swipeController.onStart();
+
+		if (newSwipeController != null)
+			newSwipeController.onStart();
+		
+		
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+
+		if (swipeController != null) {
+			swipeController.onResume();
+		}
+
+		if (newSwipeController != null) {
+			if (newSwipeController.isConnected()) {
+				newSwipeController.closeBTReader();
+				newSwipeController.onResume();
+			}
+		}
+	}
+
+	@Override
+	public void onPause() {
+		if (swipeController != null) {
+			swipeController.onPause();
+		}
+
+		/** Note: Issue in onPause() for BT in New epn SDK **/
+		if (newSwipeController != null) {
+			newSwipeController.onPause();
+		}
+
+
+		super.onPause();
+	}
+	
+	@Override
+	public void onStop() {
+		if (swipeController != null) {
+			swipeController.onStop();
+		}
+
+		if (newSwipeController != null) {
+			if (newSwipeController.isConnected()) {
+				newSwipeController.closeBTReader();
+				newSwipeController.onStop();
+			}
+
+		}
+		super.onStop();
+	}
+	
+	
 	private class AddCustomerToCDMTask extends AsyncTask<String,Void,String>
 	{
 
@@ -1104,7 +1279,7 @@ public class CreditCardMainActivity extends Activity implements OnClickListener 
 			myPost.addParam("Description", editTextName.getText().toString() + " Transaction");
 			myPost.addParam("Email", editTextEmail.getText().toString());
 			myPost.addParam("Identifier", appointmentResultId);
-			//			myPost.addParam("CustomerID", appointmentResultId);
+			myPost.addParam("CustomerID", appointmentResultId);
 			myPost.addParam("Phone", strPhone);
 
 			myPost.addParam("Name", editTextName.getText().toString());
@@ -1144,8 +1319,9 @@ public class CreditCardMainActivity extends Activity implements OnClickListener 
 			}
 		}
 	}
-
-	class PaymentService extends AsyncTask<String, Void, String> {
+	
+	
+class PaymentService extends AsyncTask<String, Void, String> {
 		PaymentServices paymentservice;
 
 		public PaymentService(int which) {
@@ -1232,58 +1408,14 @@ public class CreditCardMainActivity extends Activity implements OnClickListener 
 			editProspectAsynTask = null;
 		}
 		swipeController = null;
-		swipeController1 = null;
+		newSwipeController = null;
 		if (paymentService != null) {
 			paymentService.cancel(true);
 			paymentService = null;
 		}
 	}
 
-	@Override
-	public void onStart() {
-		super.onStart();
 
-		if (swipeController != null)
-			swipeController.onStart();
-		
-		if (swipeController1 != null)
-			swipeController1.onStart();
-	}
-
-	@Override
-	public void onResume() {
-		super.onResume();
-
-		if (swipeController != null) {
-			swipeController.onResume();
-		}
-		if (swipeController1 != null) {
-			swipeController1.onResume();
-		}
-	}
-
-	@Override
-	public void onPause() {
-		overridePendingTransition(R.anim.activity_open_scale,
-				R.anim.activity_close_translate);
-		if (swipeController != null) {
-			swipeController.onPause();
-		}
-		if (swipeController1 != null) {
-			swipeController1.onPause();
-		}
-
-		super.onPause();
-	}
-
-	@Override
-	public void onStop() {
-		if (swipeController1 != null) {
-			swipeController1.onStop();
-		}
-
-		super.onStop();
-	}
 
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
@@ -1291,8 +1423,8 @@ public class CreditCardMainActivity extends Activity implements OnClickListener 
 		if (swipeController != null) {
 			swipeController.onPause();
 		}
-		if (swipeController1 != null) {
-			swipeController1.onStop();
+		if (newSwipeController != null) {
+			newSwipeController.onStop();
 		}
 		// TODO
 	}
