@@ -6,19 +6,19 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Context;
-import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.webparadox.bizwizsales.adapter.CusAttachmentAdapter;
 import com.webparadox.bizwizsales.datacontroller.Singleton;
 import com.webparadox.bizwizsales.helper.ServiceHelper;
 import com.webparadox.bizwizsales.libraries.ActivityIndicator;
 import com.webparadox.bizwizsales.libraries.Constants;
 import com.webparadox.bizwizsales.models.CustomerAttachmentModel;
+
+import android.content.Context;
+import android.os.AsyncTask;
+import android.util.Log;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class CustomerAttachmentAsyncTask extends AsyncTask<Void, Integer, Void> {
 

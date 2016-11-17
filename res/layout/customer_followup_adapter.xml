@@ -21,6 +21,14 @@
             android:gravity="center"
             android:padding="@dimen/three"
             android:orientation="vertical" >
+            
+             <TextView
+                android:id="@+id/cus_followup_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 android:singleLine="true"
+                 android:textSize="@dimen/txt10"
+                android:text="TextView" />
 
             <TextView
                 android:id="@+id/cus_followup_date"

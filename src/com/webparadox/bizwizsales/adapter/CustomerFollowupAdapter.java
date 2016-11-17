@@ -2,6 +2,11 @@ package com.webparadox.bizwizsales.adapter;
 
 import java.util.ArrayList;
 
+import com.webparadox.bizwizsales.R;
+import com.webparadox.bizwizsales.datacontroller.Singleton;
+import com.webparadox.bizwizsales.libraries.Constants;
+import com.webparadox.bizwizsales.models.CustomerFollowUpsModel;
+
 import android.content.Context;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
@@ -11,11 +16,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.webparadox.bizwizsales.R;
-import com.webparadox.bizwizsales.datacontroller.Singleton;
-import com.webparadox.bizwizsales.libraries.Constants;
-import com.webparadox.bizwizsales.models.CustomerFollowUpsModel;
 
 public class CustomerFollowupAdapter extends BaseAdapter implements OnClickListener{
 
@@ -72,6 +72,10 @@ public class CustomerFollowupAdapter extends BaseAdapter implements OnClickListe
 		customerFollowupTime.setTypeface(droidSans);
 		TextView customerFollowupNote=(TextView)convertView.findViewById(R.id.cus_followup_note);
 		customerFollowupNote.setTypeface(droidSans);
+		
+		TextView customerFollowupEmployee = (TextView)convertView.findViewById(R.id.cus_followup_name);
+		customerFollowupEmployee.setTypeface(droidSans);
+		
 		TextView customerFollowupResolve=(TextView)convertView.findViewById(R.id.cus_followup_resolve);
 		customerFollowupResolve.setTypeface(droidSansBold);
 		TextView customerFollowupResolveDate=(TextView)convertView.findViewById(R.id.cus_followup_resolve_date);
@@ -79,12 +83,14 @@ public class CustomerFollowupAdapter extends BaseAdapter implements OnClickListe
 		followupLayout.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.shape_myhotquotes_row_blue));
 		customerFollowupDate.setText(cusFollowupModelList.get(position).FollowUpDate);
 		customerFollowupTime.setText(cusFollowupModelList.get(position).FollowupTime);
+		customerFollowupEmployee.setText(cusFollowupModelList.get(position).FollowupEmployee);
 		customerFollowupNote.setText(cusFollowupModelList.get(position).FollowupNotes);
 		customerFollowupResolveDate.setText(cusFollowupModelList.get(position).FollowupCompletedDate);
 		resloveLayout.setVisibility(View.INVISIBLE);
 		customerFollowupDate.setTextColor(mContext.getResources().getColor(R.color.white));
 		customerFollowupTime.setTextColor(mContext.getResources().getColor(R.color.white));
 		customerFollowupNote.setTextColor(mContext.getResources().getColor(R.color.white));
+		customerFollowupEmployee.setTextColor(mContext.getResources().getColor(R.color.white));
 
 		if(cusFollowupModelList.get(position).FollowupIsCompleted.equals(Constants.COMPLETED)){
 			followupLayout.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.selector_calendar_list_content));

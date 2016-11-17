@@ -10,6 +10,35 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.google.analytics.tracking.android.EasyTracker;
+import com.webparadox.bizwizsales.adapter.CustomerDetailAppointmentAdapter;
+import com.webparadox.bizwizsales.adapter.CustomerDetailProjectAdapter;
+import com.webparadox.bizwizsales.adapter.CustomerNotesAdapter;
+import com.webparadox.bizwizsales.asynctasks.CustomerFollowUpsAsyncTask;
+import com.webparadox.bizwizsales.asynctasks.DispoQuestionnaireAsyncTask;
+import com.webparadox.bizwizsales.asynctasks.EmailAsyncTask;
+import com.webparadox.bizwizsales.asynctasks.GetDealsEmployeeAsyncTask;
+import com.webparadox.bizwizsales.asynctasks.NotesAsyncTask;
+import com.webparadox.bizwizsales.asynctasks.PhonenumbersAsyncTask;
+import com.webparadox.bizwizsales.asynctasks.SaveDispoAsyncTask;
+import com.webparadox.bizwizsales.asynctasks.SaveEmailAsynctask;
+import com.webparadox.bizwizsales.asynctasks.SavePhoneNumberAsynctask;
+import com.webparadox.bizwizsales.asynctasks.SmartSearchAsyncTask;
+import com.webparadox.bizwizsales.datacontroller.Singleton;
+import com.webparadox.bizwizsales.dialogs.CreateFollowUpDialog;
+import com.webparadox.bizwizsales.dialogs.CreateFollowUpDialog.RefreshFollowup;
+import com.webparadox.bizwizsales.dialogs.FollowUpResolveDialog;
+import com.webparadox.bizwizsales.dialogs.FollowUpResolveDialog.ReloadFollowup;
+import com.webparadox.bizwizsales.helper.ServiceHelper;
+import com.webparadox.bizwizsales.helper.Utils;
+import com.webparadox.bizwizsales.libraries.ActivityIndicator;
+import com.webparadox.bizwizsales.libraries.Constants;
+import com.webparadox.bizwizsales.libraries.Utilities;
+import com.webparadox.bizwizsales.models.CustomerDetailsAppointmentsModel;
+import com.webparadox.bizwizsales.models.CustomerDetailsProjectModel;
+import com.webparadox.bizwizsales.models.GetEmployeesModel;
+import com.webparadox.bizwizsales.models.NotesTypeModel;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -58,36 +87,6 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.google.analytics.tracking.android.EasyTracker;
-import com.webparadox.bizwizsales.adapter.CustomerDetailAppointmentAdapter;
-import com.webparadox.bizwizsales.adapter.CustomerDetailProjectAdapter;
-import com.webparadox.bizwizsales.adapter.CustomerNotesAdapter;
-import com.webparadox.bizwizsales.asynctasks.CustomerFollowUpsAsyncTask;
-import com.webparadox.bizwizsales.asynctasks.DispoQuestionnaireAsyncTask;
-import com.webparadox.bizwizsales.asynctasks.EmailAsyncTask;
-import com.webparadox.bizwizsales.asynctasks.GetDealsEmployeeAsyncTask;
-import com.webparadox.bizwizsales.asynctasks.NotesAsyncTask;
-import com.webparadox.bizwizsales.asynctasks.PhonenumbersAsyncTask;
-import com.webparadox.bizwizsales.asynctasks.SaveDispoAsyncTask;
-import com.webparadox.bizwizsales.asynctasks.SaveEmailAsynctask;
-import com.webparadox.bizwizsales.asynctasks.SavePhoneNumberAsynctask;
-import com.webparadox.bizwizsales.asynctasks.SmartSearchAsyncTask;
-import com.webparadox.bizwizsales.datacontroller.Singleton;
-import com.webparadox.bizwizsales.dialogs.CreateFollowUpDialog;
-import com.webparadox.bizwizsales.dialogs.CreateFollowUpDialog.RefreshFollowup;
-import com.webparadox.bizwizsales.dialogs.FollowUpResolveDialog;
-import com.webparadox.bizwizsales.dialogs.FollowUpResolveDialog.ReloadFollowup;
-import com.webparadox.bizwizsales.helper.ServiceHelper;
-import com.webparadox.bizwizsales.helper.Utils;
-import com.webparadox.bizwizsales.libraries.ActivityIndicator;
-import com.webparadox.bizwizsales.libraries.Constants;
-import com.webparadox.bizwizsales.libraries.Utilities;
-import com.webparadox.bizwizsales.models.CustomerDetailsAppointmentsModel;
-import com.webparadox.bizwizsales.models.CustomerDetailsProjectModel;
-import com.webparadox.bizwizsales.models.CustomerNotesModel;
-import com.webparadox.bizwizsales.models.GetEmployeesModel;
-import com.webparadox.bizwizsales.models.NotesTypeModel;
-
 @SuppressLint("SimpleDateFormat")
 public class CustomerDetailsActivity extends Activity implements
 		RefreshFollowup, ReloadFollowup {
@@ -114,8 +113,10 @@ public class CustomerDetailsActivity extends Activity implements
 	SharedPreferences.Editor editor;
 	String dealerID = "";
 	String employeeID = "";
+	String appointmentId = "";
 	String employeeName = "";
-	String customerAddress, CustomerId, customerName;
+	String customerAddress, CustomerId,customerId, customerName, appntId;
+	String APPID="1";
 	static Context context;
 	ActivityIndicator pDialog;
 	CustomerDetailAppointmentAdapter appointmentAdapter;
@@ -209,6 +210,7 @@ public class CustomerDetailsActivity extends Activity implements
 		editor.commit();
 		dealerID = userData.getString(Constants.KEY_LOGIN_DEALER_ID, "");
 		employeeID = userData.getString(Constants.KEY_LOGIN_EMPLOYEE_ID, "");
+		appointmentId = userData.getString(Constants.KEY_APPOINTMENT_ID, "");
 		employeeName = userData.getString(Constants.KEY_EMPLOYEE_NAME, "");
 		droidSans = Typeface.createFromAsset(getAssets(), "DroidSans.ttf");
 		droidSansBold = Typeface.createFromAsset(getAssets(),
@@ -639,6 +641,7 @@ public class CustomerDetailsActivity extends Activity implements
 		editor.putString("Name", customerName);
 		editor.putString("Address", customerAddress);
 		editor.putString("DealerId", dealerID);
+		editor.putString("AppointmentId", appointmentId);
 		editor.putString("EmployeeId", employeeID);
 		editor.putString("Position", "" + position);
 		editor.putString("CustomerId", CustomerId);
@@ -756,14 +759,16 @@ public class CustomerDetailsActivity extends Activity implements
 		try {
 			reqObj_data.put(Constants.KEY_LOGIN_DEALER_ID, dealerID);
 			reqObj_data.put(Constants.JSON_KEY_CUSTOMER_ID, CustomerId);
-		} catch (JSONException e) {
+		
+		} 
+		catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		reqData.add(reqObj_data);
 		phoneTask = new PhonenumbersAsyncTask(context,
-				Constants.GET_PHONENUMBER_URL, Constants.REQUEST_TYPE_POST,
-				reqData);
+				Constants.EDIT_PROSPECT_URL + dealerID + "&CustomerId="
+						+ CustomerId + "&AppId=" + APPID, Constants.REQUEST_TYPE_GET, reqData);
 		phoneTask.execute();
 
 	}
@@ -1006,11 +1011,11 @@ public class CustomerDetailsActivity extends Activity implements
 				try {
 					if(responseJson != null){
 
-						if (responseJson.has(Constants.KEY_PROJECT_RESPONSE)
+						if (responseJson.has(Constants.EDIT_PROSPECT_CONFIGUATION_KEY)
 								&& responseJson.length() != 0) {
 							Singleton.getInstance().clearCustomerProjectList();
 							localJsonArray = responseJson
-									.getJSONArray(Constants.KEY_PROJECT_RESPONSE);
+									.getJSONArray(Constants.EDIT_PROSPECT_CONFIGUATION_KEY);
 							for (int i = 0; i < localJsonArray.length(); i++) {
 								JSONObject jsonObj = localJsonArray
 										.getJSONObject(i);

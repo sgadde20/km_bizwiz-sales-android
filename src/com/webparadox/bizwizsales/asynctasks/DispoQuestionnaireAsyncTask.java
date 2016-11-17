@@ -6,17 +6,16 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Context;
-import android.os.AsyncTask;
-import android.util.Log;
-
 import com.webparadox.bizwizsales.datacontroller.Singleton;
 import com.webparadox.bizwizsales.helper.ServiceHelper;
 import com.webparadox.bizwizsales.libraries.ActivityIndicator;
 import com.webparadox.bizwizsales.libraries.Constants;
-import com.webparadox.bizwizsales.models.AppointmentQuestionnaireQuestionOptionModel;
 import com.webparadox.bizwizsales.models.DispoChoiceOptions;
 import com.webparadox.bizwizsales.models.DispoQuestionnaireModel;
+
+import android.content.Context;
+import android.os.AsyncTask;
+import android.util.Log;
 
 public class DispoQuestionnaireAsyncTask extends AsyncTask<Void, Void, Void> {
 	Context context;
@@ -25,15 +24,17 @@ public class DispoQuestionnaireAsyncTask extends AsyncTask<Void, Void, Void> {
 	ActivityIndicator pDialog;
 	String dealerId, dispoId;
 	String appointmentResultId;
+	String appointmentType;
 	DispoQuestionnaireModel dispoQuestionnaireModel;
 	DispoChoiceOptions optionsModel;
 	postQuestionnaire postQuestionnaire;
 
 	public DispoQuestionnaireAsyncTask(Context context2, String dealerId,
-			String appointmentResultId, String dispoId) {
+			String appointmentResultId, String dispoId, String appointmentType) {
 		this.context = context2;
 		this.dealerId = dealerId;
 		this.appointmentResultId = appointmentResultId;
+		this.appointmentType = appointmentType;
 		this.dispoId = dispoId;
 		helper = new ServiceHelper(context);
 		postQuestionnaire = (postQuestionnaire) context;

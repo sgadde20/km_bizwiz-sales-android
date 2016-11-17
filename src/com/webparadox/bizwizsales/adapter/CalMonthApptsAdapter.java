@@ -5,6 +5,12 @@ import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.webparadox.bizwizsales.R;
+import com.webparadox.bizwizsales.asynctasks.PhonenumbersAsyncTask;
+import com.webparadox.bizwizsales.datacontroller.Singleton;
+import com.webparadox.bizwizsales.libraries.Constants;
+import com.webparadox.bizwizsales.models.CalendarListPaginationModel;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.view.LayoutInflater;
@@ -15,19 +21,14 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.webparadox.bizwizsales.R;
-import com.webparadox.bizwizsales.asynctasks.PhonenumbersAsyncTask;
-import com.webparadox.bizwizsales.datacontroller.Singleton;
-import com.webparadox.bizwizsales.libraries.Constants;
-import com.webparadox.bizwizsales.models.CalendarListPaginationModel;
-
 public class CalMonthApptsAdapter extends BaseAdapter {
 	// ArrayList<CalendarListPaginationModel> mList;
 	public static Context mContext;
 	LayoutInflater listinflate;
-	String mSelDate, dealerID;
+	String mSelDate, dealerID, mCustomerId;
 	SharedPreferences userData;
 	public PhonenumbersAsyncTask phoneTask;
+	String APPID="1";
 
 	public CalMonthApptsAdapter(Context context, String selDate,
 			ArrayList<CalendarListPaginationModel> list) {
@@ -40,6 +41,8 @@ public class CalMonthApptsAdapter extends BaseAdapter {
 		userData = context.getSharedPreferences(
 				Constants.SHARED_PREFERENCE_NAME, 0);
 		dealerID = userData.getString(Constants.KEY_LOGIN_DEALER_ID, "");
+		mCustomerId = userData.getString("CustomerId",
+				Constants.EMPTY_STRING);
 		ArrayList<CalendarListPaginationModel> test = new ArrayList<CalendarListPaginationModel>();
 		for (CalendarListPaginationModel calendarListPaginationModel :list) {
 			if (!calendarListPaginationModel.mEventType.equals("isHeader")) {
@@ -109,11 +112,11 @@ public class CalMonthApptsAdapter extends BaseAdapter {
 					try {
 						reqObj_data
 								.put(Constants.KEY_LOGIN_DEALER_ID, dealerID);
-						// reqObj_data.put(Constants.JSON_KEY_CUSTOMER_ID,
-						// (mList.get(position).mCustomerId));
+						
 						reqObj_data.put(Constants.JSON_KEY_CUSTOMER_ID,
 								(Singleton.getInstance().selectedDayApptsData
 										.get(position).mCustomerId));
+						
 
 					} catch (JSONException e) {
 						// TODO Auto-generated catch block
@@ -121,8 +124,9 @@ public class CalMonthApptsAdapter extends BaseAdapter {
 					}
 					reqData.add(reqObj_data);
 					phoneTask = new PhonenumbersAsyncTask(mContext,
-							Constants.GET_PHONENUMBER_URL,
-							Constants.REQUEST_TYPE_POST, reqData);
+							Constants.EDIT_PROSPECT_URL + dealerID + "&CustomerId="
+									+ Singleton.getInstance().selectedDayApptsData
+									.get(position).mCustomerId + "&AppId=" + APPID, Constants.REQUEST_TYPE_GET, reqData);
 					phoneTask.execute();
 				}
 			});

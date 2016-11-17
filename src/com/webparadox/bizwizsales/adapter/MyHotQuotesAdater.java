@@ -5,6 +5,12 @@ import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.webparadox.bizwizsales.R;
+import com.webparadox.bizwizsales.asynctasks.PhonenumbersAsyncTask;
+import com.webparadox.bizwizsales.datacontroller.Singleton;
+import com.webparadox.bizwizsales.libraries.Constants;
+import com.webparadox.bizwizsales.models.MyHotQuotesModel;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -18,12 +24,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.webparadox.bizwizsales.R;
-import com.webparadox.bizwizsales.asynctasks.PhonenumbersAsyncTask;
-import com.webparadox.bizwizsales.datacontroller.Singleton;
-import com.webparadox.bizwizsales.libraries.Constants;
-import com.webparadox.bizwizsales.models.MyHotQuotesModel;
-
 public class MyHotQuotesAdater extends BaseAdapter {
 
 	Context mContext;
@@ -33,6 +33,7 @@ public class MyHotQuotesAdater extends BaseAdapter {
 	SharedPreferences userData;
 	MyHotQuotesModel model;
 	public PhonenumbersAsyncTask phoneTask; 
+	String APPID="1";
 	
 	public MyHotQuotesAdater(Context applicationContext) {
 		// TODO Auto-generated constructor stub
@@ -158,8 +159,8 @@ public class MyHotQuotesAdater extends BaseAdapter {
 				}
 				reqData.add(reqObj_data);
 				phoneTask = new PhonenumbersAsyncTask(mContext,
-						Constants.GET_PHONENUMBER_URL,
-						Constants.REQUEST_TYPE_POST, reqData);
+						Constants.EDIT_PROSPECT_URL + dealerID + "&CustomerId="
+								+model.getCustomerId()+ "&AppId=" + APPID, Constants.REQUEST_TYPE_GET, reqData);
 				phoneTask.execute();
 			}
 		});

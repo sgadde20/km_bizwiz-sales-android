@@ -5,6 +5,13 @@ import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.webparadox.bizwizsales.R;
+import com.webparadox.bizwizsales.asynctasks.PhonenumbersAsyncTask;
+import com.webparadox.bizwizsales.datacontroller.Singleton;
+import com.webparadox.bizwizsales.helper.ServiceHelper;
+import com.webparadox.bizwizsales.libraries.ActivityIndicator;
+import com.webparadox.bizwizsales.libraries.Constants;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -31,13 +38,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.webparadox.bizwizsales.R;
-import com.webparadox.bizwizsales.asynctasks.PhonenumbersAsyncTask;
-import com.webparadox.bizwizsales.datacontroller.Singleton;
-import com.webparadox.bizwizsales.helper.ServiceHelper;
-import com.webparadox.bizwizsales.libraries.ActivityIndicator;
-import com.webparadox.bizwizsales.libraries.Constants;
 
 public class AddPhonenumberDialog implements OnClickListener,
 		OnItemSelectedListener {

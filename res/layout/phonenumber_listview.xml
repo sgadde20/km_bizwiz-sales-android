@@ -9,7 +9,39 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/two"
         android:background="@drawable/resolve_background" >
-
+        
+    <TextView
+        android:id="@+id/cus_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/phonenumber_listview"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:background="@android:color/transparent"
+        android:fadingEdge="none"
+        android:gravity="center"
+        android:listSelector="@android:color/transparent"
+        android:paddingLeft="@dimen/ten"
+        android:paddingRight="@dimen/ten"
+        
+        android:textColor="@color/blue_button_bg"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:visibility="visible" />
+    
+    <TextView
+        android:id="@+id/company_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cus_name"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:textColor="@color/blue_button_bg"
+        android:textSize="22sp"
+        android:visibility="visible" />
+  
+     
         <ListView
             android:id="@+id/phonenumber_listview"
             android:layout_width="match_parent"
@@ -26,11 +58,13 @@
             android:listSelector="@android:color/transparent"
             android:paddingLeft="@dimen/ten"
             android:paddingRight="@dimen/ten"
-            android:paddingTop="@dimen/twenty"
+            android:paddingTop="@dimen/fifty"
             android:scrollbars="none"
             android:visibility="gone" >
 
         </ListView>
+        
+       
 
         <LinearLayout
             android:id="@+id/add_layout"
@@ -40,7 +74,6 @@
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="@dimen/twenty"
             android:layout_marginRight="@dimen/twenty"
-            android:layout_marginTop="@dimen/five"
             android:layout_marginBottom="@dimen/twenty"
             android:weightSum="2"
             android:orientation="horizontal" >
@@ -57,41 +90,32 @@
                 android:textColor="@color/white" />
 
             <Button 
-                 android:id="@+id/button_phonenumber_cancel"
+            android:id="@+id/button_phonenumber_cancel"
             android:layout_width="0dp"
             android:layout_height="@dimen/forty"
-             android:background="@drawable/selector_prospect_save_button"
-             android:layout_marginLeft="@dimen/three"
-             android:text="@string/cancel"
-              android:textColor="@color/white"
-             android:layout_weight="0.7"/>
+            android:background="@drawable/selector_prospect_save_button"
+            android:layout_marginLeft="@dimen/three"
+            android:text="@string/cancel"
+            android:textColor="@color/white"
+            android:layout_weight="0.7"/>
             </LinearLayout>
 
         <TextView
             android:id="@+id/no_number_textview"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/forty"
+            android:layout_above="@+id/add_layout"
             android:layout_alignLeft="@+id/add_layout"
             android:layout_alignParentTop="true"
             android:layout_alignRight="@+id/add_layout"
             android:layout_marginTop="@dimen/twenty"
             android:background="@drawable/resolve_text_background"
             android:gravity="center"
-            android:textColor="@color/white"
             android:text="No Contacts"
+            android:textColor="@color/white"
             android:visibility="visible" />
 
+       
     </RelativeLayout>
-
-    <!-- <Button
-        android:id="@+id/button_phonenumber_cancel"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="@dimen/forty"
-        android:layout_height="@dimen/forty"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_below="@+id/button_phonenumber_cancel"
-        android:background="@drawable/ic_notes_cancel_button"
-        android:gravity="right" /> -->
 
 </RelativeLayout>

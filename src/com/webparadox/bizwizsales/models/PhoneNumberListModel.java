@@ -6,6 +6,8 @@ public class PhoneNumberListModel {
 	String phoneNumberId;
 	String phone;
 	String phoneTypeId;
+	String FirstName;
+	String LastName;
 	
 	public String getCustomerId() {
 		return customerId;
@@ -37,4 +39,11 @@ public class PhoneNumberListModel {
 	public void setPhoneTypeId(String phoneTypeId) {
 		this.phoneTypeId = phoneTypeId;
 	}
+	public void setFirstName(String FirstName) {
+		this.FirstName = FirstName;
+	}
+	public void setLastName(String LastName) {
+		this.LastName = LastName;
+	}
+	
 }

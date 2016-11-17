@@ -4,6 +4,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.webparadox.bizwizsales.R;
+import com.webparadox.bizwizsales.datacontroller.Singleton;
+import com.webparadox.bizwizsales.libraries.Constants;
+import com.webparadox.bizwizsales.models.phoneModel;
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -18,17 +23,14 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.webparadox.bizwizsales.R;
-import com.webparadox.bizwizsales.datacontroller.Singleton;
-import com.webparadox.bizwizsales.libraries.Constants;
-import com.webparadox.bizwizsales.models.phoneModel;
-
 public class PhonenumberListAdapter extends BaseAdapter{
 	public Context mContext;
 	LayoutInflater listinflate;
 	public ArrayList<phoneModel>mPhoneData=new ArrayList<phoneModel>();
+
 	Dialog mDialog;
 	String cusID;
+//	public static final String TAG = "YOUR-TAG-NAME";
 	public PhonenumberListAdapter(Context context,ArrayList<phoneModel> arrData, Dialog dialog, String cusID) {
 		super();
 		// TODO Auto-generated constructor stub
@@ -40,6 +42,7 @@ public class PhonenumberListAdapter extends BaseAdapter{
 
 	@Override
 	public int getCount() {
+	//	Log.d(TAG,"Error");
 		// TODO Auto-generated method stub
 		return mPhoneData.size();
 	}
@@ -68,6 +71,8 @@ public class PhonenumberListAdapter extends BaseAdapter{
 				.findViewById(R.id.type);
 		TextView phone = (TextView) convertView
 				.findViewById(R.id.phone);
+		TextView notes = (TextView) convertView
+				.findViewById(R.id.notes);
 		Button button_call=(Button)convertView.findViewById(R.id.button_phone_call);
 		button_call.setOnClickListener(new OnClickListener() {
 
@@ -88,6 +93,7 @@ public class PhonenumberListAdapter extends BaseAdapter{
 
 		type.setText(mPhoneData.get(position).mTypeName.toUpperCase());
 		phone.setText(mPhoneData.get(position).mPhone);
+		notes.setText(mPhoneData.get(position).mnotes);
 		return convertView;
 	}
 public void dismissAlert(){

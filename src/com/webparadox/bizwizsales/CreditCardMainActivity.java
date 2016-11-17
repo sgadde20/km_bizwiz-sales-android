@@ -925,7 +925,7 @@ public class CreditCardMainActivity extends Activity implements OnClickListener 
 		@Override
 		protected Void doInBackground(Void... params) {
 			responseJson = helper.jsonSendHTTPRequest("",
-					Constants.EDIT_PROSPECT_URL + dealerID + "&customerid="
+					Constants.GET_PHONENUMBER_URL + dealerID + "&customerid="
 							+ customerId, Constants.REQUEST_TYPE_GET);
 			return null;
 		}

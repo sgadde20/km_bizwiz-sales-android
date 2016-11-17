@@ -25,6 +25,49 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.google.analytics.tracking.android.EasyTracker;
+import com.webparadox.bizwizsales.CalendarActivity.Compare;
+import com.webparadox.bizwizsales.adapter.SalesProcessProductGridViewAdapter;
+import com.webparadox.bizwizsales.asynctasks.AppointmentQuestionnaireAsyncTask;
+import com.webparadox.bizwizsales.asynctasks.AppointmentQuestionnaireAsyncTask.AppointmentQuestionnaireInterface;
+import com.webparadox.bizwizsales.asynctasks.CustomerAttachmentAsyncTask;
+import com.webparadox.bizwizsales.asynctasks.DispoQuestionnaireAsyncTask;
+import com.webparadox.bizwizsales.asynctasks.DispoQuestionnaireAsyncTask.postQuestionnaire;
+import com.webparadox.bizwizsales.asynctasks.FinancingCompanyAsyncTask;
+import com.webparadox.bizwizsales.asynctasks.GetProposalAsyncTask;
+import com.webparadox.bizwizsales.asynctasks.GetProposalAsyncTask.onProposalListener;
+import com.webparadox.bizwizsales.asynctasks.LeadQuestionaireAsyncTask;
+import com.webparadox.bizwizsales.asynctasks.LeadQuestionaireAsyncTask.LeadPostExecute;
+import com.webparadox.bizwizsales.asynctasks.ProposalAsynTask;
+import com.webparadox.bizwizsales.asynctasks.ProposalAsynTask.IDispoSubDispoQuestions;
+import com.webparadox.bizwizsales.asynctasks.SaveDispoAsyncTask;
+import com.webparadox.bizwizsales.asynctasks.SaveDispoQstnAsyncTask;
+import com.webparadox.bizwizsales.asynctasks.SaveDispoQstnAsyncTask.loadSalesResult;
+import com.webparadox.bizwizsales.asynctasks.SmartSearchAsyncTask;
+import com.webparadox.bizwizsales.asynctasks.SpProductsAsyncTask;
+import com.webparadox.bizwizsales.asynctasks.SummaryEmailAsyncTask;
+import com.webparadox.bizwizsales.asynctasks.TermsAsyncTask;
+import com.webparadox.bizwizsales.asynctasks.TermsAsyncTask.Step2LabelListener;
+import com.webparadox.bizwizsales.datacontroller.DatabaseHandler;
+import com.webparadox.bizwizsales.datacontroller.Singleton;
+import com.webparadox.bizwizsales.helper.ObjectSerializer;
+import com.webparadox.bizwizsales.helper.PaymentStatusHandler;
+import com.webparadox.bizwizsales.helper.ServiceHelper;
+import com.webparadox.bizwizsales.helper.Utils;
+import com.webparadox.bizwizsales.libraries.ActivityIndicator;
+import com.webparadox.bizwizsales.libraries.Constants;
+import com.webparadox.bizwizsales.libraries.Utilities;
+import com.webparadox.bizwizsales.models.AppointmentDateTimeModel;
+import com.webparadox.bizwizsales.models.AppointmentTypeModel;
+import com.webparadox.bizwizsales.models.DispoModel;
+import com.webparadox.bizwizsales.models.DispoQuestionnaireModel;
+import com.webparadox.bizwizsales.models.EventConfigurationAppntTypeModel;
+import com.webparadox.bizwizsales.models.EventConfigurationVisitTypeModel;
+import com.webparadox.bizwizsales.models.LeadTypeModel;
+import com.webparadox.bizwizsales.models.ProposalCartModel;
+import com.webparadox.bizwizsales.models.SpProductSubCatAndMaterialModel;
+import com.webparadox.bizwizsales.models.SubDispoModel;
+
 import android.annotation.SuppressLint;
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
@@ -87,49 +130,6 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.google.analytics.tracking.android.EasyTracker;
-import com.webparadox.bizwizsales.CalendarActivity.Compare;
-import com.webparadox.bizwizsales.adapter.SalesProcessProductGridViewAdapter;
-import com.webparadox.bizwizsales.asynctasks.AppointmentQuestionnaireAsyncTask;
-import com.webparadox.bizwizsales.asynctasks.AppointmentQuestionnaireAsyncTask.AppointmentQuestionnaireInterface;
-import com.webparadox.bizwizsales.asynctasks.CustomerAttachmentAsyncTask;
-import com.webparadox.bizwizsales.asynctasks.DispoQuestionnaireAsyncTask;
-import com.webparadox.bizwizsales.asynctasks.DispoQuestionnaireAsyncTask.postQuestionnaire;
-import com.webparadox.bizwizsales.asynctasks.FinancingCompanyAsyncTask;
-import com.webparadox.bizwizsales.asynctasks.GetProposalAsyncTask;
-import com.webparadox.bizwizsales.asynctasks.GetProposalAsyncTask.onProposalListener;
-import com.webparadox.bizwizsales.asynctasks.LeadQuestionaireAsyncTask;
-import com.webparadox.bizwizsales.asynctasks.LeadQuestionaireAsyncTask.LeadPostExecute;
-import com.webparadox.bizwizsales.asynctasks.ProposalAsynTask;
-import com.webparadox.bizwizsales.asynctasks.ProposalAsynTask.IDispoSubDispoQuestions;
-import com.webparadox.bizwizsales.asynctasks.SaveDispoAsyncTask;
-import com.webparadox.bizwizsales.asynctasks.SaveDispoQstnAsyncTask;
-import com.webparadox.bizwizsales.asynctasks.SaveDispoQstnAsyncTask.loadSalesResult;
-import com.webparadox.bizwizsales.asynctasks.SmartSearchAsyncTask;
-import com.webparadox.bizwizsales.asynctasks.SpProductsAsyncTask;
-import com.webparadox.bizwizsales.asynctasks.SummaryEmailAsyncTask;
-import com.webparadox.bizwizsales.asynctasks.TermsAsyncTask;
-import com.webparadox.bizwizsales.asynctasks.TermsAsyncTask.Step2LabelListener;
-import com.webparadox.bizwizsales.datacontroller.DatabaseHandler;
-import com.webparadox.bizwizsales.datacontroller.Singleton;
-import com.webparadox.bizwizsales.helper.ObjectSerializer;
-import com.webparadox.bizwizsales.helper.PaymentStatusHandler;
-import com.webparadox.bizwizsales.helper.ServiceHelper;
-import com.webparadox.bizwizsales.helper.Utils;
-import com.webparadox.bizwizsales.libraries.ActivityIndicator;
-import com.webparadox.bizwizsales.libraries.Constants;
-import com.webparadox.bizwizsales.libraries.Utilities;
-import com.webparadox.bizwizsales.models.AppointmentDateTimeModel;
-import com.webparadox.bizwizsales.models.AppointmentTypeModel;
-import com.webparadox.bizwizsales.models.DispoModel;
-import com.webparadox.bizwizsales.models.DispoQuestionnaireModel;
-import com.webparadox.bizwizsales.models.EventConfigurationAppntTypeModel;
-import com.webparadox.bizwizsales.models.EventConfigurationVisitTypeModel;
-import com.webparadox.bizwizsales.models.LeadTypeModel;
-import com.webparadox.bizwizsales.models.ProposalCartModel;
-import com.webparadox.bizwizsales.models.SpProductSubCatAndMaterialModel;
-import com.webparadox.bizwizsales.models.SubDispoModel;
-
 public class CustomerAppointmentsActivity extends Activity implements
 OnClickListener, LeadPostExecute, AppointmentQuestionnaireInterface,
 OnItemSelectedListener, OnCheckedChangeListener, postQuestionnaire,
@@ -164,7 +164,7 @@ onProposalListener {
 	String text_HotQuotes = "";
 	static Context context;
 	String selectedItem, name, address, type, date, time, eventType,
-	appointmentId, dealerId, LeadTypeId, AppointmentTypeId, employeeId,
+	appointmentId, dealerId, LeadTypeId, AppointmentTypeId,AppointmentType, employeeId,
 	customerId, eventId, Edit_date, Edit_time, typeId, timeInterval;
 	public static String appntResultId, locksavingDispo;
 	Typeface droidSans, droidSansBold;
@@ -256,6 +256,7 @@ onProposalListener {
 	String DispoId = "";
 	String SubDispoId = "";
 	String appointmentResultId;
+	String appointmentType;
 	LinearLayout layout_hotQuotes;
 	EditText edit_notes;
 	ImageView cash, check, crietcard, financing;
@@ -310,11 +311,13 @@ onProposalListener {
 		position = Integer.parseInt(userData.getString("Position",
 				Constants.EMPTY_STRING));
 		dealerId = userData.getString("DealerId", Constants.EMPTY_STRING);
+		appointmentType = userData.getString("AppointmentType", Constants.EMPTY_STRING);
 		appointmentSelected = userData.getInt("appointmentSelected", 0);
 		leadSelected = userData.getInt("leadSelected", 0);
 		contractAmount = userData.getString("Amount", Constants.EMPTY_STRING);
 		appointmentResultId = userData.getString(Constants.KEY_APPT_RESULT_ID,
 				"0");
+		AppointmentTypeId = userData.getString(Constants.KEY_APPOINTMENT_TYPE, "0");
 		context = this;
 		dbHandler = new DatabaseHandler(this);
 		serviceHelper = new ServiceHelper(context);
@@ -658,6 +661,7 @@ onProposalListener {
 
 		AppointmentTypeId = Singleton.getInstance().appointmentArray.get(
 				position).getAppointmentTypeId();
+		AppointmentType = Singleton.getInstance().appointmentArray.get(position).getAppointmentTypeId();
 		cusAppointmentName.setText(name);
 		cusAppointmentAddress.setText(address);
 		cusAppointmentDate.setText(date + " " + time);
@@ -4354,7 +4358,7 @@ onProposalListener {
 						+ eventId);
 				if (Constants.isLock.equalsIgnoreCase("True")) {
 					dispoAsyncTask = new DispoQuestionnaireAsyncTask(context,
-							dealerId, appointmentResultId, DispoId);
+							dealerId, appointmentResultId, DispoId, AppointmentTypeId);
 					dispoAsyncTask.execute();
 				} else {
 					if (Singleton.getInstance().lastSelected != 0) {
@@ -4363,6 +4367,7 @@ onProposalListener {
 							ArrayList<JSONObject> reqArrPro = new ArrayList<JSONObject>();
 							obj.put(Constants.KEY_APPT_RESULT_ID,
 									appointmentResultId);
+							obj.put(Constants.KEY_APPOINTMENT_TYPE, AppointmentTypeId);
 							if (text_HotQuotes.equals("Hot Quote")) {
 								obj.put("HotQuoteFollowUpDate",
 										text_select_date.getText().toString());
@@ -4372,7 +4377,7 @@ onProposalListener {
 							reqArrPro.add(obj);
 							saveDispoAsyncTask = new SaveDispoAsyncTask(
 									context, reqArrPro, dealerId,
-									appointmentResultId, DispoId);
+									appointmentResultId,appointmentType, DispoId);
 							saveDispoAsyncTask.execute();
 						} catch (JSONException e) {
 							e.printStackTrace();
@@ -4424,6 +4429,7 @@ onProposalListener {
 		try {
 			obj.put(Constants.KEY_LOGIN_DEALER_ID, dealerId);
 			obj.put(Constants.KEY_LOGIN_EMPLOYEE_ID, employeeId);
+			obj.put(Constants.KEY_APPOINTMENT_TYPE, AppointmentType);
 			obj.put(Constants.KEY_DISPO_ID, DispoId);
 			obj.put("SubDispoId", SubDispoId);
 			obj.put("AppointmentResultNotes", edit_notes.getText().toString());

@@ -5,16 +5,16 @@ import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Context;
-import android.os.AsyncTask;
-
 import com.webparadox.bizwizsales.helper.ServiceHelper;
 import com.webparadox.bizwizsales.libraries.ActivityIndicator;
 import com.webparadox.bizwizsales.libraries.Constants;
 
+import android.content.Context;
+import android.os.AsyncTask;
+
 public class AppointmentResultIdAsyncTask extends AsyncTask<Void, Void, Void> {
 	Context cntx;
-	String dealerId, appntId, eventId, employeeId, dispoId;
+	String dealerId, appntId, eventId, employeeId, appointmentType, dispoId;
 	ActivityIndicator pDialog;
 	ServiceHelper helper;
 	JSONObject responseJson;
@@ -26,13 +26,14 @@ public class AppointmentResultIdAsyncTask extends AsyncTask<Void, Void, Void> {
 
 	public AppointmentResultIdAsyncTask(Context context, JSONObject obj,
 			String dealerId, String appointmentId, String eventId,
-			String employeeId, String dispoId2) {
+			String employeeId, String dispoId2, String appointmentType) {
 		this.cntx = context;
 		this.dealerId = dealerId;
 		this.appntId = appointmentId;
 		this.employeeId = employeeId;
 		this.eventId = eventId;
 		this.dispoId = dispoId2;
+		this.appointmentType = appointmentType;
 		this.reqObjList = obj;
 		helper = new ServiceHelper(cntx);
 	}
@@ -92,7 +93,7 @@ public class AppointmentResultIdAsyncTask extends AsyncTask<Void, Void, Void> {
 									appointmentResultId);
 							reqArrayList.add(reqObjList);
 							saveDispoAsyncTask = new SaveDispoAsyncTask(cntx,
-									reqArrayList, dealerId, appointmentResultId,
+									reqArrayList, dealerId, appointmentType, appointmentResultId,
 									dispoId);
 							saveDispoAsyncTask.execute();
 						}

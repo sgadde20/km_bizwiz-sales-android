@@ -2,21 +2,24 @@ package com.webparadox.bizwizsales.libraries;
 
 import java.util.ArrayList;
 
+import com.bugsense.trace.BugSenseHandler;
+import com.webparadox.bizwizsales.LoginActivity;
+import com.webparadox.bizwizsales.R;
+
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.util.Base64;
 
-import com.bugsense.trace.BugSenseHandler;
-import com.webparadox.bizwizsales.LoginActivity;
-import com.webparadox.bizwizsales.R;
-
 public class Constants {
 
-	public static String BASE_URL = "https://sbizwizsync.teambizwiz.com/"; // LiveBaseURL
+	public static String APPID="1";
+	//public static String BASE_URL = "https://sbizwizsync.teambizwiz.com/"; // LiveBaseURL
 	//public static String BASE_URL = "https://c-mobile.teambizwiz.com/"; // DevelopmentBaseURL
-//	public static String BASE_URL = "https://devmobile.teambizwiz.com/";
+	public static String BASE_URL = "https://devmobile.teambizwiz.com/";
+	//public static String BASE_URL = "https://prelivemobile.teambizwiz.com/";
+	
 	
 	public static String BASE_URL_SALES = BASE_URL + "SalesApp/";
 	public static String DeleteProductUrl = BASE_URL_SALES
@@ -102,7 +105,7 @@ public class Constants {
 			+ "sa_child_employees.aspx?DealerId=";
 
 	// Edit Customer Info
-	public static String EDIT_PROSPECT_URL = BASE_URL_SALES + "customer_details.aspx?dealerid=";
+	public static String EDIT_PROSPECT_URL = BASE_URL_SALES + "customer_details.aspx?DealerId=";
 
 	// Credit Card Types
 	public static String CC_TYPES = BASE_URL + "cc_types.aspx?DealerId=";
@@ -271,6 +274,7 @@ public class Constants {
 	public static String KEY_LOGIN_RESPONSE_MESSAGE = "ResponseMessage";
 	public static String KEY_LOGIN_DEALER_ID = "DealerId";
 	public static String KEY_LOGIN_EMPLOYEE_ID = "EmployeeId";
+	public static String KEY_LOGIN_APPOINTMENT_ID = "AppointmentId";
 	public static String KEY_LOGIN_CREATED_BY_EMPLOYEE_ID = "CreatedById";
 	public static String KEY_EMPLOYEE_NAME = "EmployeeName";
 	public static String KEY_EMPLOYEE_PHOTO_URL = "PhotoURL";
@@ -315,6 +319,7 @@ public class Constants {
 	public static String JSON_KEY_CUSTOMER_ID = "CustomerId";
 	public static String JSON_KEY_CUSTOMER_NAME = "CustomerName";
 	public static String JSON_KEY_EVENT_NOTES = "EventNotes";
+	public static String JSON_KEY_APPOINTMENT_ID = "AppointmentId";
 	public static String JSON_KEY_EVENT_TYPE = "EventType";
 	public static String JSON_KEY_HUSBAND = "Husband";
 	public static String JSON_KEY_LAST_NAME = "LastName";
@@ -436,6 +441,8 @@ public class Constants {
 	public static String JSON_KEY_TYPENAME = "TypeName";
 	public static String JSON_KEY_PHONENUMBER_ID = "PhoneNumberId";
 	public static String JSON_KEY_CUSTOMER_PHONE = "CP";
+	public static String JSON_KEY_LASTNAME = "LastName";
+	public static String JSON_KEY_NOTES = "Notes";
 
 	// Key - Sequal Json Variables
 
@@ -776,6 +783,7 @@ public class Constants {
 	public static String METHODS = "Methods";
 	public static String PAYMENTMETHOD = "PaymentMethod";
 	public static String PAYMENT_SUCCESS = "SUCCESS";
+	
 
 	// Key - Financing Company Json Variables
 	public static String JSON_KEY_FC = "FC";

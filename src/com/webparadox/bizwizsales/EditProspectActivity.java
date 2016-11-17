@@ -9,6 +9,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.webparadox.bizwizsales.datacontroller.Singleton;
+import com.webparadox.bizwizsales.helper.GPSTracker;
+import com.webparadox.bizwizsales.helper.ServiceHelper;
+import com.webparadox.bizwizsales.libraries.ActivityIndicator;
+import com.webparadox.bizwizsales.libraries.Constants;
+import com.webparadox.bizwizsales.models.PhoneNumberListModel;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -41,13 +48,6 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.webparadox.bizwizsales.datacontroller.Singleton;
-import com.webparadox.bizwizsales.helper.GPSTracker;
-import com.webparadox.bizwizsales.helper.ServiceHelper;
-import com.webparadox.bizwizsales.libraries.ActivityIndicator;
-import com.webparadox.bizwizsales.libraries.Constants;
-import com.webparadox.bizwizsales.models.PhoneNumberListModel;
 
 public class EditProspectActivity extends Activity implements OnClickListener,
 		OnItemSelectedListener {

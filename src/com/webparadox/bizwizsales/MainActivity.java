@@ -15,6 +15,27 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.google.analytics.tracking.android.EasyTracker;
+import com.webparadox.bizwizsales.adapter.MainMenuAdapter;
+import com.webparadox.bizwizsales.asynctasks.DispoSubDispoAsynctask;
+import com.webparadox.bizwizsales.asynctasks.LeadTypeAsync;
+import com.webparadox.bizwizsales.asynctasks.SmartSearchAsyncTask;
+import com.webparadox.bizwizsales.datacontroller.DatabaseHandler;
+import com.webparadox.bizwizsales.datacontroller.Singleton;
+import com.webparadox.bizwizsales.helper.BizWizUpdateReciver;
+import com.webparadox.bizwizsales.helper.SendLocationService;
+import com.webparadox.bizwizsales.helper.ServiceHelper;
+import com.webparadox.bizwizsales.helper.Utils;
+import com.webparadox.bizwizsales.libraries.ActivityIndicator;
+import com.webparadox.bizwizsales.libraries.Constants;
+import com.webparadox.bizwizsales.libraries.Utilities;
+import com.webparadox.bizwizsales.models.AppointmentTypeModel;
+import com.webparadox.bizwizsales.models.CalendarListPaginationModel;
+import com.webparadox.bizwizsales.models.HomeScreenModel;
+import com.webparadox.bizwizsales.models.LeadTypeModel;
+import com.webparadox.bizwizsales.models.MyHotQuotesModel;
+import com.webparadox.bizwizsales.models.OfflineCalendarEntryModel;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlarmManager;
@@ -63,27 +84,6 @@ import android.widget.SearchView.OnQueryTextListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.analytics.tracking.android.EasyTracker;
-import com.webparadox.bizwizsales.adapter.MainMenuAdapter;
-import com.webparadox.bizwizsales.asynctasks.DispoSubDispoAsynctask;
-import com.webparadox.bizwizsales.asynctasks.LeadTypeAsync;
-import com.webparadox.bizwizsales.asynctasks.SmartSearchAsyncTask;
-import com.webparadox.bizwizsales.datacontroller.DatabaseHandler;
-import com.webparadox.bizwizsales.datacontroller.Singleton;
-import com.webparadox.bizwizsales.helper.BizWizUpdateReciver;
-import com.webparadox.bizwizsales.helper.SendLocationService;
-import com.webparadox.bizwizsales.helper.ServiceHelper;
-import com.webparadox.bizwizsales.helper.Utils;
-import com.webparadox.bizwizsales.libraries.ActivityIndicator;
-import com.webparadox.bizwizsales.libraries.Constants;
-import com.webparadox.bizwizsales.libraries.Utilities;
-import com.webparadox.bizwizsales.models.AppointmentTypeModel;
-import com.webparadox.bizwizsales.models.CalendarListPaginationModel;
-import com.webparadox.bizwizsales.models.HomeScreenModel;
-import com.webparadox.bizwizsales.models.LeadTypeModel;
-import com.webparadox.bizwizsales.models.MyHotQuotesModel;
-import com.webparadox.bizwizsales.models.OfflineCalendarEntryModel;
-
 @SuppressLint("NewApi")
 public class MainActivity extends Activity implements
 SearchView.OnQueryTextListener, SearchView.OnCloseListener,
@@ -111,6 +111,7 @@ OnClickListener, android.view.View.OnClickListener {
 	String dealerID = "";
 	String employeeID = "";
 	String employeeName = "";
+	
 	String empl_Image_String,goRecent;
 	LinearLayout layout;
 	public TextView mtdSalesValue, ytdSalesValue, adlSalesValue, mtdHead,

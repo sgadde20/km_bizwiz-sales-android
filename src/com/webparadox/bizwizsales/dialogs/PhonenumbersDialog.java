@@ -8,6 +8,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.webparadox.bizwizsales.R;
+import com.webparadox.bizwizsales.adapter.PhonenumberListAdapter;
+import com.webparadox.bizwizsales.datacontroller.Singleton;
+import com.webparadox.bizwizsales.helper.ServiceHelper;
+import com.webparadox.bizwizsales.libraries.ActivityIndicator;
+import com.webparadox.bizwizsales.libraries.Constants;
+import com.webparadox.bizwizsales.models.CustomerAttachmentModel;
+import com.webparadox.bizwizsales.models.phoneModel;
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -31,36 +40,40 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.webparadox.bizwizsales.R;
-import com.webparadox.bizwizsales.adapter.PhonenumberListAdapter;
-import com.webparadox.bizwizsales.datacontroller.Singleton;
-import com.webparadox.bizwizsales.helper.ServiceHelper;
-import com.webparadox.bizwizsales.libraries.ActivityIndicator;
-import com.webparadox.bizwizsales.libraries.Constants;
-import com.webparadox.bizwizsales.models.phoneModel;
-
 public class PhonenumbersDialog {
 
 	Dialog dialog;
+	TextView textview;
 	Context mContext;
 	ArrayList<phoneModel> mCustomerPhoneData = new ArrayList<phoneModel>();
+	ArrayList<CustomerAttachmentModel> mcustomerData = new ArrayList<CustomerAttachmentModel>();
 	String cusID, dealerId;
-	 ActivityIndicator pDialog;
+	ActivityIndicator pDialog;
 	JSONObject responseJson;
 	ServiceHelper serviceHelper;
 	ArrayList<JSONObject> mRequestJson;
 	SharedPreferences userData;
 	JSONObject localJsonObject;
 	Typeface droidSansBold;
+	String name, companyname;
+
+	CustomerAttachmentModel cusAttachmentModel;
+
+//	public static final String TAG = "YOUR-TAG-NAME";
+	
+	
 
 	public void showPhonenumberDialog(Context context,
-			final ArrayList<phoneModel> PhoneData, String cusId) {
+			final ArrayList<phoneModel> PhoneData, String cusId,ArrayList<CustomerAttachmentModel> customerData) {
 		mContext = context;
 		this.cusID = cusId;
 		this.mCustomerPhoneData = PhoneData;
+		this.mcustomerData=customerData;
 		droidSansBold = Typeface.createFromAsset(mContext.getAssets(),
 				"DroidSans-Bold.ttf");
+		
 		dialog = new Dialog(mContext);
+		textview = new TextView(mContext);
 		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		WindowManager.LayoutParams WMLP = dialog.getWindow().getAttributes();
 		WMLP.gravity = Gravity.CENTER;
@@ -70,6 +83,22 @@ public class PhonenumbersDialog {
 		dialog.setCancelable(false);
 		dialog.setCanceledOnTouchOutside(false);
 		dialog.setContentView(R.layout.phonenumber_listview);
+		
+		
+		TextView name = (TextView) dialog.findViewById(R.id.cus_name);
+		TextView companyname = (TextView) dialog.findViewById(R.id.company_name);
+	
+		
+		
+		if(mcustomerData!=null)
+		{
+			if(mcustomerData.size()>=1)
+			{
+			name.setText(""+mcustomerData.get(0).customerName);
+			companyname.setText(""+mcustomerData.get(0).companyName);
+			}
+		}
+		
 		userData = mContext.getSharedPreferences(
 				Constants.SHARED_PREFERENCE_NAME, 0);
 		dealerId = userData.getString(Constants.KEY_LOGIN_DEALER_ID, "");
@@ -77,47 +106,63 @@ public class PhonenumbersDialog {
 		mRequestJson = new ArrayList<JSONObject>();
 		RelativeLayout phonenumbersLayout = (RelativeLayout) dialog
 				.findViewById(R.id.phonenumber_layout);
-		TextView noNumberTextview = (TextView) dialog
+	    TextView noNumberTextview = (TextView) dialog
 				.findViewById(R.id.no_number_textview);
+	 
+	    
 		noNumberTextview.setTypeface(droidSansBold);
-		int size = (int) mContext.getResources().getDimension(R.dimen.sixty);
+	
+		int size3 = (int) mContext.getResources().getDimension(R.dimen.eighty);
 		int five = (int) mContext.getResources().getDimension(R.dimen.five);
 		int ten = (int) mContext.getResources().getDimension(R.dimen.ten);
 		int forty = (int) mContext.getResources().getDimension(R.dimen.forty);
 		int sixty = (int) mContext.getResources().getDimension(R.dimen.seventy);
-
+	
 		Button phoneNumberAddBtn = (Button) dialog
 				.findViewById(R.id.phonenumber_add_btn);
 		ListView listitem = (ListView) dialog
 				.findViewById(R.id.phonenumber_listview);
+		
+		
 		// phoneNumberAddBtn.setTypeface(droidSansBold);
 		noNumberTextview.setVisibility(View.GONE);
+		
+		
 		listitem.setVisibility(View.VISIBLE);
 		if (mCustomerPhoneData.size() < 4) {
+		
 			if (mCustomerPhoneData.size() == 0) {
+				//Log.d(TAG,"Error");
 				noNumberTextview.setVisibility(View.VISIBLE);
+				
 				listitem.setVisibility(View.GONE);
+				
 				RelativeLayout.LayoutParams layout_description = new RelativeLayout.LayoutParams(
 						RelativeLayout.LayoutParams.MATCH_PARENT, forty
 								+ (sixty + (ten + ten)));
 				layout_description.setMargins(five, ten, five, five);
 				phonenumbersLayout.setLayoutParams(layout_description);
+			
 			} else {
-				RelativeLayout.LayoutParams layout_description = new RelativeLayout.LayoutParams(
+				
+			    RelativeLayout.LayoutParams layout_description = new RelativeLayout.LayoutParams(
 						RelativeLayout.LayoutParams.MATCH_PARENT,
-						(mCustomerPhoneData.size() * size)
+						(mCustomerPhoneData.size() * size3)
 								+ (sixty + (ten + ten)));
 				layout_description.setMargins(five, ten, five, five);
+				
 				phonenumbersLayout.setLayoutParams(layout_description);
-
+				
 			}
 
 		} else {
+		
 			RelativeLayout.LayoutParams layout_description = new RelativeLayout.LayoutParams(
-					RelativeLayout.LayoutParams.MATCH_PARENT, (3 * size)
+					RelativeLayout.LayoutParams.MATCH_PARENT, (3 * size3)
 							+ (sixty + (ten + ten + ten)));
 			layout_description.setMargins(five, ten, five, five);
 			phonenumbersLayout.setLayoutParams(layout_description);
+			
 		}
 		Button cancel = (Button) dialog
 				.findViewById(R.id.button_phonenumber_cancel);
@@ -148,6 +193,7 @@ public class PhonenumbersDialog {
 
 		listitem.setAdapter(new PhonenumberListAdapter(mContext,
 				mCustomerPhoneData, dialog, cusID));
+		
 		listitem.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -167,10 +213,13 @@ public class PhonenumbersDialog {
 
 			}
 		});
+		
+		
 		dialog.show();
-
+		
 	}
 
+	
 	public void dismissAlert() {
 
 		if (dialog != null) {
@@ -194,6 +243,7 @@ public class PhonenumbersDialog {
 			pDialog = new ActivityIndicator(mContext);
 			pDialog.show();
 			serviceHelper = new ServiceHelper(mContext);
+
 		}
 
 		@Override
@@ -225,6 +275,7 @@ public class PhonenumbersDialog {
 								try {
 									localJsonObject = localJsonArray
 											.getJSONObject(i);
+									
 								} catch (JSONException e) {
 									// TODO Auto-generated catch block
 									e.printStackTrace();
@@ -247,7 +298,8 @@ public class PhonenumbersDialog {
 											Constants.TOASTMSG_TIME).show();
 								}
 							}
-						} catch (JSONException e1) {
+						} //end try 
+						catch (JSONException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
@@ -255,11 +307,9 @@ public class PhonenumbersDialog {
 								mContext, cusID);
 						addDialog.AddPhoneNumber();
 
-					} else {
-						Toast.makeText(mContext,
-								Constants.TOAST_CONNECTION_ERROR,
-								Constants.TOASTMSG_TIME).show();
-					}
+					} //end first if
+					
+					
 				} else {
 					Toast.makeText(mContext, Constants.TOAST_INTERNET,
 							Constants.TOASTMSG_TIME).show();
@@ -267,6 +317,9 @@ public class PhonenumbersDialog {
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
+			
+			
+			
 			try {
 				if (pDialog != null) {
 					if (pDialog.isShowing()) {

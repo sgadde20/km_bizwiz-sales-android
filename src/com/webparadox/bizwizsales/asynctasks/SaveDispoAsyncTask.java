@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Context;
-import android.os.AsyncTask;
-import android.widget.Toast;
-
 import com.webparadox.bizwizsales.helper.ServiceHelper;
 import com.webparadox.bizwizsales.libraries.ActivityIndicator;
 import com.webparadox.bizwizsales.libraries.Constants;
+
+import android.content.Context;
+import android.os.AsyncTask;
+import android.widget.Toast;
 
 public class SaveDispoAsyncTask extends AsyncTask<Void, Void, Void> {
 
@@ -21,14 +21,15 @@ public class SaveDispoAsyncTask extends AsyncTask<Void, Void, Void> {
 	ArrayList<JSONObject> objList;
 	ActivityIndicator pDialog;
 	DispoQuestionnaireAsyncTask dispoAsyncTask;
-	String dealerId, appntId, eventId, employeeId, dispoId;
+	String dealerId, appntId, eventId, employeeId, dispoId, appointmentType;
 
 	public SaveDispoAsyncTask(Context context, ArrayList<JSONObject> reqArrPro,
-			String dealerId, String appntResultId, String dispoId) {
+			String dealerId, String appntResultId, String apppointmentType, String dispoId) {
 		this.cntx = context;
 		this.objList = reqArrPro;
 		this.dealerId = dealerId;
 		this.appntId = appntResultId;
+		this.appointmentType = appointmentType;
 		this.dispoId = dispoId;
 		helper = new ServiceHelper(cntx);
 	}
@@ -68,7 +69,7 @@ public class SaveDispoAsyncTask extends AsyncTask<Void, Void, Void> {
 						Toast.makeText(cntx, "Appointment Results Saved",
 								Toast.LENGTH_SHORT).show();
 						dispoAsyncTask = new DispoQuestionnaireAsyncTask(cntx,
-								dealerId, appntId, dispoId);
+								dealerId, appntId, dispoId, appointmentType);
 						dispoAsyncTask.execute();
 					} else {
 						Toast.makeText(cntx, "Appointment Results Not Saved",

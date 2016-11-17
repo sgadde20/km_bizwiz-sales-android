@@ -19,6 +19,27 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.google.analytics.tracking.android.EasyTracker;
+import com.webparadox.bizwizsales.adapter.CalMonthApptsAdapter;
+import com.webparadox.bizwizsales.adapter.CalendarDaysAdapter;
+import com.webparadox.bizwizsales.asynctasks.ChildEmployeeAsyncTask;
+import com.webparadox.bizwizsales.asynctasks.PhonenumbersAsyncTask;
+import com.webparadox.bizwizsales.asynctasks.SavePhoneNumberAsynctask;
+import com.webparadox.bizwizsales.asynctasks.SmartSearchAsyncTask;
+import com.webparadox.bizwizsales.datacontroller.DatabaseHandler;
+import com.webparadox.bizwizsales.datacontroller.Singleton;
+import com.webparadox.bizwizsales.helper.ServiceHelper;
+import com.webparadox.bizwizsales.helper.Utils;
+import com.webparadox.bizwizsales.libraries.ActivityIndicator;
+import com.webparadox.bizwizsales.libraries.Constants;
+import com.webparadox.bizwizsales.libraries.Utilities;
+import com.webparadox.bizwizsales.models.AppointmentDateTimeModel;
+import com.webparadox.bizwizsales.models.CalendarListPaginationModel;
+import com.webparadox.bizwizsales.models.EventConfigurationAppntTypeModel;
+import com.webparadox.bizwizsales.models.EventConfigurationVisitTypeModel;
+import com.webparadox.bizwizsales.models.LeadTypeModel;
+import com.webparadox.bizwizsales.models.OfflineCalendarEntryModel;
+
 import android.annotation.SuppressLint;
 import android.app.ActionBar.LayoutParams;
 import android.app.AlertDialog;
@@ -79,27 +100,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
-import com.google.analytics.tracking.android.EasyTracker;
-import com.webparadox.bizwizsales.adapter.CalMonthApptsAdapter;
-import com.webparadox.bizwizsales.adapter.CalendarDaysAdapter;
-import com.webparadox.bizwizsales.asynctasks.ChildEmployeeAsyncTask;
-import com.webparadox.bizwizsales.asynctasks.PhonenumbersAsyncTask;
-import com.webparadox.bizwizsales.asynctasks.SavePhoneNumberAsynctask;
-import com.webparadox.bizwizsales.asynctasks.SmartSearchAsyncTask;
-import com.webparadox.bizwizsales.datacontroller.DatabaseHandler;
-import com.webparadox.bizwizsales.datacontroller.Singleton;
-import com.webparadox.bizwizsales.helper.ServiceHelper;
-import com.webparadox.bizwizsales.helper.Utils;
-import com.webparadox.bizwizsales.libraries.ActivityIndicator;
-import com.webparadox.bizwizsales.libraries.Constants;
-import com.webparadox.bizwizsales.libraries.Utilities;
-import com.webparadox.bizwizsales.models.AppointmentDateTimeModel;
-import com.webparadox.bizwizsales.models.CalendarListPaginationModel;
-import com.webparadox.bizwizsales.models.EventConfigurationAppntTypeModel;
-import com.webparadox.bizwizsales.models.EventConfigurationVisitTypeModel;
-import com.webparadox.bizwizsales.models.LeadTypeModel;
-import com.webparadox.bizwizsales.models.OfflineCalendarEntryModel;
 
 //import android.support.v7.widget.SearchView;
 
@@ -1548,6 +1548,8 @@ OnQueryTextListener, OnCloseListener, android.view.View.OnClickListener {
 
 								mCalendarModel.mCustomerId = calJsonObject.get(
 										Constants.JSON_KEY_CUSTOMER_ID).toString();
+								/*mCalendarModel.mAppointmentId = calJsonObject.get(
+										Constants.JSON_KEY_APPOINTMENT_ID).toString();*/
 								mCalendarModel.mCustomerName = calJsonObject.get(
 										Constants.JSON_KEY_CUSTOMER_NAME)
 										.toString();
@@ -3561,6 +3563,7 @@ OnQueryTextListener, OnCloseListener, android.view.View.OnClickListener {
 									dealerID);
 							reqObj_data.put(Constants.JSON_KEY_CUSTOMER_ID,
 									(mList.get(position).mCustomerId));
+							
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
