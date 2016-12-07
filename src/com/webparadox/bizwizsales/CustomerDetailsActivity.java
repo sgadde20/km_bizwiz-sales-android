@@ -1011,11 +1011,11 @@ public class CustomerDetailsActivity extends Activity implements
 				try {
 					if(responseJson != null){
 
-						if (responseJson.has(Constants.EDIT_PROSPECT_CONFIGUATION_KEY)
+						if (responseJson.has(Constants.KEY_PROJECT_RESPONSE)
 								&& responseJson.length() != 0) {
 							Singleton.getInstance().clearCustomerProjectList();
 							localJsonArray = responseJson
-									.getJSONArray(Constants.EDIT_PROSPECT_CONFIGUATION_KEY);
+									.getJSONArray(Constants.KEY_PROJECT_RESPONSE);
 							for (int i = 0; i < localJsonArray.length(); i++) {
 								JSONObject jsonObj = localJsonArray
 										.getJSONObject(i);
