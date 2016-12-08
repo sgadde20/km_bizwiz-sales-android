@@ -209,8 +209,8 @@ public class PhonenumbersAsyncTask extends AsyncTask<Void, Integer, Void> {
 							mCustomerPhoneData,  cusID,mcustomerData);
 				}
 			} else {
-				Toast.makeText(mContext, Constants.TOAST_CONNECTION_ERROR,
-						Constants.TOASTMSG_TIME).show();
+				/*Toast.makeText(mContext, Constants.TOAST_CONNECTION_ERROR,
+						Constants.TOASTMSG_TIME).show();*/
 			}
 
 		} else {
