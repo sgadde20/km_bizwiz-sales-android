@@ -15,9 +15,9 @@ import android.util.Base64;
 public class Constants {
 
 	public static String APPID="1";
-	public static String BASE_URL = "https://sbizwizsync.teambizwiz.com/"; // LiveBaseURL
+	//public static String BASE_URL = "https://sbizwizsync.teambizwiz.com/"; // LiveBaseURL
 	//public static String BASE_URL = "https://c-mobile.teambizwiz.com/"; // DevelopmentBaseURL
-	//public static String BASE_URL = "https://devmobile.teambizwiz.com/";
+	public static String BASE_URL = "https://devmobile.teambizwiz.com/";
 	//public static String BASE_URL = "https://prelivemobile.teambizwiz.com/";
 	
 	
@@ -126,6 +126,9 @@ public class Constants {
 
 	// Empty String
 	public static String EMPTY_STRING = "";
+	
+	// Check User Access
+	public static String CHECK_USER_ACCESS_URL = BASE_URL + "check_user_access.aspx";
 
 	// Symbols
 	public static String SYMBOL_AND = "&";

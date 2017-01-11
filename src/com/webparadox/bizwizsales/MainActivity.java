@@ -17,6 +17,7 @@ import org.json.JSONObject;
 
 import com.google.analytics.tracking.android.EasyTracker;
 import com.webparadox.bizwizsales.adapter.MainMenuAdapter;
+import com.webparadox.bizwizsales.asynctasks.CheckUserAccessAsynctask;
 import com.webparadox.bizwizsales.asynctasks.DispoSubDispoAsynctask;
 import com.webparadox.bizwizsales.asynctasks.LeadTypeAsync;
 import com.webparadox.bizwizsales.asynctasks.SmartSearchAsyncTask;
@@ -217,6 +218,10 @@ OnClickListener, android.view.View.OnClickListener {
 		employeeName = userData.getString(Constants.KEY_EMPLOYEE_NAME, "");
 		empl_Image_String = userData.getString("Iamge_Employee", null);
 		goRecent = userData.getString(Constants.KEY_UPDATE_DISPOS_TO_PROCEED, "");
+		
+		//Check user access
+		CheckUserAccessAsynctask cuaTask = new CheckUserAccessAsynctask(context, dealerID, employeeID);
+		cuaTask.execute();
 	}
 
 	@Override
