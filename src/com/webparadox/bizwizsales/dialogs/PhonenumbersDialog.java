@@ -10,6 +10,7 @@ import org.json.JSONObject;
 
 import com.webparadox.bizwizsales.R;
 import com.webparadox.bizwizsales.adapter.PhonenumberListAdapter;
+import com.webparadox.bizwizsales.asynctasks.CheckUserAccessAsynctask;
 import com.webparadox.bizwizsales.datacontroller.Singleton;
 import com.webparadox.bizwizsales.helper.ServiceHelper;
 import com.webparadox.bizwizsales.libraries.ActivityIndicator;
@@ -56,6 +57,7 @@ public class PhonenumbersDialog {
 	JSONObject localJsonObject;
 	Typeface droidSansBold;
 	String name, companyname;
+	String employeeId;
 
 	CustomerAttachmentModel cusAttachmentModel;
 
@@ -84,7 +86,6 @@ public class PhonenumbersDialog {
 		dialog.setCanceledOnTouchOutside(false);
 		dialog.setContentView(R.layout.phonenumber_listview);
 		
-		
 		TextView name = (TextView) dialog.findViewById(R.id.cus_name);
 		TextView companyname = (TextView) dialog.findViewById(R.id.company_name);
 	
@@ -102,15 +103,18 @@ public class PhonenumbersDialog {
 		userData = mContext.getSharedPreferences(
 				Constants.SHARED_PREFERENCE_NAME, 0);
 		dealerId = userData.getString(Constants.KEY_LOGIN_DEALER_ID, "");
+		employeeId = userData.getString(Constants.KEY_LOGIN_EMPLOYEE_ID, "");
 		responseJson = new JSONObject();
 		mRequestJson = new ArrayList<JSONObject>();
 		RelativeLayout phonenumbersLayout = (RelativeLayout) dialog
 				.findViewById(R.id.phonenumber_layout);
 	    TextView noNumberTextview = (TextView) dialog
 				.findViewById(R.id.no_number_textview);
-	 
-	    
 		noNumberTextview.setTypeface(droidSansBold);
+		
+		//Check user access
+		CheckUserAccessAsynctask cuaTask = new CheckUserAccessAsynctask(context, dealerId, employeeId);
+		cuaTask.execute();
 	
 		int size3 = (int) mContext.getResources().getDimension(R.dimen.eighty);
 		int five = (int) mContext.getResources().getDimension(R.dimen.five);

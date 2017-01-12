@@ -14,6 +14,7 @@ import com.google.analytics.tracking.android.EasyTracker;
 import com.webparadox.bizwizsales.adapter.CustomerDetailAppointmentAdapter;
 import com.webparadox.bizwizsales.adapter.CustomerDetailProjectAdapter;
 import com.webparadox.bizwizsales.adapter.CustomerNotesAdapter;
+import com.webparadox.bizwizsales.asynctasks.CheckUserAccessAsynctask;
 import com.webparadox.bizwizsales.asynctasks.CustomerFollowUpsAsyncTask;
 import com.webparadox.bizwizsales.asynctasks.DispoQuestionnaireAsyncTask;
 import com.webparadox.bizwizsales.asynctasks.EmailAsyncTask;
@@ -611,6 +612,10 @@ public class CustomerDetailsActivity extends Activity implements
 	/*	if(Singleton.getInstance().hotQuotesList.get(currentPostion).equals("SALES")){
 			
 		}*/
+		
+		//Check user access
+		CheckUserAccessAsynctask cuaTask = new CheckUserAccessAsynctask(context, dealerID, employeeID);
+		cuaTask.execute();
 	}
 
 	@Override
