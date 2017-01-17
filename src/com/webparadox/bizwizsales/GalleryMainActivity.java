@@ -1,11 +1,16 @@
 package com.webparadox.bizwizsales;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -22,6 +27,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.webkit.MimeTypeMap;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -323,8 +329,15 @@ OnClickListener {
 			break;
 		case R.id.pdf_btn:
 			try{
+				
+				
+				
+				
 				Intent intentfileExplorer = new Intent(Intent.ACTION_GET_CONTENT);
-				intentfileExplorer.setType("file/*");
+				Uri uri = Uri.parse(Environment.getDownloadCacheDirectory().getPath().toString());
+				intentfileExplorer.addCategory(Intent.CATEGORY_OPENABLE);
+				intentfileExplorer.setDataAndType(uri, "*/*");
+				//intentfileExplorer.setType("*/*");
 				if(intentfileExplorer.resolveActivity(getPackageManager()) != null)
 					startActivityForResult(intentfileExplorer, FILE_EXPLORER);
 			}catch (Exception e) {
@@ -362,10 +375,33 @@ OnClickListener {
 			}
 
 		} else if (requestCode ==FILE_EXPLORER  && data!=null) {
-			String strpdf=data.getData().getLastPathSegment().replace(" ", "").toString();
-			if (strpdf.substring(strpdf.length()-3).toLowerCase().equals("pdf")) {
+			//String strpdf=data.getData().getLastPathSegment().replace(" ", "").toString();
+			//String Uri = data.getData().getPath();
+			
+			//To create a temporary file
+			String extr = Environment.getExternalStorageDirectory().toString();
+            File mFolder = new File(extr + "/bizwiz");
+            if (!mFolder.exists()) {
+                mFolder.mkdir();
+            }
+            String s = "toupload.pdf";
+            File toUploadfile = new File(mFolder, s);
+            
+            ContentResolver cR = context.getContentResolver();
+            MimeTypeMap mime = MimeTypeMap.getSingleton();
+            String fileType = mime.getExtensionFromMimeType(cR.getType(data.getData()));
+            
+			if (fileType.equalsIgnoreCase("pdf")) {
+				try {
+					InputStream in = getContentResolver().openInputStream(data.getData());
+					copyInputStreamToFile(in, toUploadfile);
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				ArrayList<String> str = new ArrayList<String>();
-				str.add(data.getData().getPath());
+				//str.add(data.getData().getPath());
+				str.add(toUploadfile.getAbsolutePath());
 				Intent uploadIntent = new Intent(GalleryMainActivity.this,
 						GalleryUploadActivity.class);
 				uploadIntent.putStringArrayListExtra("UPLOADPHOTOURL", str);
@@ -381,6 +417,21 @@ OnClickListener {
 		}else {
 			super.onActivityResult(requestCode, resultCode, data);
 		}
+	}
+	
+	private void copyInputStreamToFile( InputStream in, File file ) {
+	    try {
+	        OutputStream out = new FileOutputStream(file);
+	        byte[] buf = new byte[1024];
+	        int len;
+	        while((len=in.read(buf))>0){
+	            out.write(buf,0,len);
+	        }
+	        out.close();
+	        in.close();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
 	}
 
 	private void getAllGalleryImages(int value) {
