@@ -387,9 +387,18 @@ OnClickListener {
             String s = "toupload.pdf";
             File toUploadfile = new File(mFolder, s);
             
-            ContentResolver cR = context.getContentResolver();
-            MimeTypeMap mime = MimeTypeMap.getSingleton();
-            String fileType = mime.getExtensionFromMimeType(cR.getType(data.getData()));
+            String fileType = "";
+            
+            if (data.getData().getScheme().equals(ContentResolver.SCHEME_CONTENT)) {
+                //If scheme is a content
+                final MimeTypeMap mime = MimeTypeMap.getSingleton();
+                fileType = mime.getExtensionFromMimeType(context.getContentResolver().getType(data.getData()));
+            } else {
+                //If scheme is a File
+                //This will replace white spaces with %20 and also other special characters. This will avoid returning null values on file name with spaces and special characters.
+            	fileType = MimeTypeMap.getFileExtensionFromUrl(Uri.fromFile(new File(data.getData().getPath())).toString());
+
+            }
             
 			if (fileType.equalsIgnoreCase("pdf")) {
 				try {
