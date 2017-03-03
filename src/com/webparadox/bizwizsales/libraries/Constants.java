@@ -389,7 +389,8 @@ public class Constants {
 	public static String KEY_MYQUOTES_JOBS = "Jobs";
 	public static String KEY_MYQUOTES_APPTS = "Appts";
 	public static String KEY_MYQUOTES_DATELASTEVENT = "DateLastEvent";
-
+   public static String KEY_MYQUOTES_STARTDATETIME = "JobStartDateTime";
+   public static String KEY_MYQUOTES_ENDDATETIME = "JobEndDateTime";
 
 	// key - Customer Details Appointments json varibales
 	public static String KEY_APPOINTMENTS_RESPONSE = "CA";

@@ -74,6 +74,8 @@ public class MyHotQuotesAdater extends BaseAdapter {
 		public TextView textAppts;
 		public TextView textJobs;
 		public TextView textFollowUps;
+		public TextView textStartDate;
+		public TextView textEndDate;
 		public LinearLayout layout_MyHotQuotes;
 		public ImageView imageCall;
 	}
@@ -96,13 +98,19 @@ public class MyHotQuotesAdater extends BaseAdapter {
 					.findViewById(R.id.textView5);
 			holder.textFollowUps = (TextView) convertView
 					.findViewById(R.id.textView6);
+		   holder.textStartDate = (TextView) convertView
+							.findViewById(R.id.textView7);
+		  holder.textEndDate = (TextView) convertView
+							.findViewById(R.id.textView8);
 			holder.layout_MyHotQuotes = (LinearLayout) convertView
 					.findViewById(R.id.layout_MyHotQuotes);
 			holder.imageCall = (ImageView) convertView
 					.findViewById(R.id.imageViewCall);
 			convertView.setTag(holder);
 
-		} else {
+		}
+	
+		else {
 			holder = (ViewHolder) convertView.getTag();
 		}
 		model = getItem(position);
@@ -116,6 +124,8 @@ public class MyHotQuotesAdater extends BaseAdapter {
 			holder.textAppts.setTextColor(Color.WHITE);
 			holder.textJobs.setTextColor(Color.WHITE);
 			holder.textFollowUps.setTextColor(Color.WHITE);
+			holder.textStartDate.setTextColor(Color.WHITE);
+			holder.textEndDate.setTextColor(Color.WHITE);
 		} else {
 			holder.layout_MyHotQuotes.setBackground(mContext.getResources()
 					.getDrawable(R.drawable.shape_myhotquotes_row_grew));
@@ -125,6 +135,8 @@ public class MyHotQuotesAdater extends BaseAdapter {
 			holder.textAppts.setTextColor(Color.BLACK);
 			holder.textJobs.setTextColor(Color.BLACK);
 			holder.textFollowUps.setTextColor(Color.BLACK);
+			holder.textStartDate.setTextColor(Color.BLACK);
+			holder.textEndDate.setTextColor(Color.BLACK);
 		}
 		holder.textName.setTypeface(droidSans);
 		holder.textAppts.setTypeface(droidSans);
@@ -132,15 +144,30 @@ public class MyHotQuotesAdater extends BaseAdapter {
 		holder.textFollowUps.setTypeface(droidSans);
 		holder.textAddress.setTypeface(droidSans);
 		holder.textDate.setTypeface(droidSans);
+		holder.textStartDate.setTypeface(droidSans);
+		holder.textEndDate.setTypeface(droidSans);
 		holder.textName.setText(model.getCustomerFullName());
 		holder.textAddress.setText(model.getCity() + ", " + model.getState()
 				+ ", " + model.getZip());
 		holder.textDate.setText("Date Last Event: " + model.getDateLastEvent());
+		holder.textStartDate.setText("Job Start Date: " + model.getJobStartDateTime());
+		holder.textEndDate.setText("Job End Date: " + model.getJobEndDateTime());
 		holder.textAppts.setText("(" + model.getAppts() + ")" + "\t" + "Appts");
 		holder.textJobs.setText("(" + model.getJobs() + ")" + "\t" + "Jobs");
 		holder.textFollowUps.setText("(" + model.getFollowups() + ")" + "\t"
 				+ "Followups");
-
+		
+		
+		if (model.getJobEndDateTime() == null && model.getJobStartDateTime() == null) {
+			holder.textStartDate.setVisibility(View.GONE);
+			holder.textEndDate.setVisibility(View.GONE);
+		}else{
+		
+			holder.textStartDate.setVisibility(View.VISIBLE);
+			holder.textEndDate.setVisibility(View.VISIBLE);
+		}
+		
+		
 		holder.imageCall.setOnClickListener(new OnClickListener() {
 
 			@Override

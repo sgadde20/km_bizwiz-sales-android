@@ -3,7 +3,7 @@ package com.webparadox.bizwizsales.models;
 public class MyHotQuotesModel {
 
 	String CustomerId, CustomerFullName, Address, City, State, Followups, Jobs,
-			Appts, DateLastEvent,zip,Date,Time;
+			Appts, DateLastEvent,zip,Date,Time,JobStartDateTime, JobEndDateTime, JobStartDate, JobEndDate, JobStartTime, JobEndTime;
 
 	public String getZip() {
 		return zip;
@@ -91,11 +91,61 @@ public class MyHotQuotesModel {
 	public void setDate(String date) {
 		this.Date = date;
 	}
+	
+	public String getJobStartDate(){
+		return JobStartDate;
+	}
+	
+	public void setJobStartDate(String jsdate){
+		this.JobStartDate = jsdate;
+	}
+	
+	public String getJobStartTime(){
+		return JobStartTime;
+	}
+	
+	public void setJobStartTime(String jstime){
+		this.JobStartTime = jstime;
+	}
+	
+	public String getJobEndDate(){
+		return JobEndDate;
+	}
+	
+	public void setJobEndDate(String jedate){
+		this.JobEndDate = jedate;
+	}
+	
+	public String getJobEndTime(){
+		return JobEndTime;
+	}
+	
+	public void setJobEndTime(String jetime){
+		this.JobEndTime = jetime;
+	}
+	
+	
 	public String getTime() {
 		return Time;
 	}
 
 	public void setTime(String time) {
 		this.Time = time;
+	}
+	
+	public void setJobStartDateTime(String startDateTime){
+		JobStartDateTime = startDateTime;
+	}
+	
+	public String getJobStartDateTime(){
+		return JobStartDateTime;
+	}
+	
+	public void setJobEndDateTime(String endDateTime){
+		JobEndDateTime = endDateTime;
+	}
+	
+	public String getJobEndDateTime(){
+		return JobEndDateTime;
 	}
 }

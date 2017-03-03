@@ -37,6 +37,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
@@ -77,7 +78,9 @@ public class MyHotQuotesActivity extends Activity implements OnClickListener {
 	SearchView myHotQuotesSearchView;
 	SmartSearchAsyncTask searchAsyncTask;
 	String Id, listBoxName;
-
+	Integer InstallationCustomerId=7;
+	public LinearLayout layout_MyHotQuotes;
+   RelativeLayout layouinstallationview;
 	private DrawerLayout mDrawerLayout;
 	RelativeLayout layoutSlidingDrawer;
 	TextView txtFilterDate,txtFilterTime;
@@ -360,13 +363,15 @@ public class MyHotQuotesActivity extends Activity implements OnClickListener {
 			if (pDialog != null && pDialog.isShowing()) {
 				pDialog.dismiss();
 				JSONArray localJsonArray;
+				
 				ArrayList<String>Locations=new ArrayList<String>();
-				SimpleDateFormat sd=new SimpleDateFormat("M/d/yyyy h:mm:ss a");
+				SimpleDateFormat sd=new SimpleDateFormat("M/d/yyyy h:mm a");
 				SimpleDateFormat sdDate=new SimpleDateFormat("M/d/yyyy");
 				SimpleDateFormat sdTime=new SimpleDateFormat("h:mm a");
 				try {
-					if(responseJson != null){
-						if (responseJson.has(Constants.KEY_MYQUOTES_RESPONSE)) {
+					if(responseJson != null ) {
+										
+						if (responseJson.has(Constants.KEY_MYQUOTES_RESPONSE )) {
 							if (responseJson.length() != 0) {
 								Singleton.getInstance().clearMyHotQuotesList();
 								Singleton.getInstance().tempHotQuotesList.clear();
@@ -395,6 +400,62 @@ public class MyHotQuotesActivity extends Activity implements OnClickListener {
 											.getString(Constants.KEY_MYQUOTES_APPTS));
 									model.setDateLastEvent(jobj
 											.getString(Constants.KEY_MYQUOTES_DATELASTEVENT));
+									
+								/*	code added for installation customers listbox */
+									System.out.println("ListBoxId = " + InstallationCustomerId);
+									if (Integer.valueOf(Id)  == InstallationCustomerId){
+										System.out.println("Job Start Date" + jobj.getString(Constants.KEY_MYQUOTES_STARTDATETIME));
+										model.setJobStartDateTime(jobj
+												.getString(Constants.KEY_MYQUOTES_STARTDATETIME));
+										model.setJobEndDateTime(jobj
+												.getString(Constants.KEY_MYQUOTES_ENDDATETIME));
+						
+									try {
+											
+											Date dt = sd.parse(jobj
+													.getString(Constants.KEY_MYQUOTES_STARTDATETIME) );
+											Calendar c=Calendar.getInstance();
+											c.setTime(dt);
+											Date ndt=c.getTime();
+								            model.setJobStartDate(""+sdDate.format(ndt));
+								            model.setJobStartTime("" +sdTime.format(ndt));
+								            Date dt2 = sd.parse(jobj
+								                     .getString(Constants.KEY_MYQUOTES_ENDDATETIME));
+								            Calendar c2 = Calendar.getInstance();
+								            c2.setTime(dt2);
+								            Date ndt2=c2.getTime();
+											model.setJobEndDate(""+sdDate.format(ndt2));
+											model.setJobEndTime(""+sdTime.format(ndt2));
+										
+										}catch (ParseException e) {
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									
+								/*	try {
+										
+										Date dt = sd.parse(jobj
+												.getString(Constants.KEY_MYQUOTES_STARTDATETIME) );
+										Calendar c=Calendar.getInstance();
+										c.setTime(dt);
+										Date ndt=c.getTime();
+							            model.setJobStartDate(""+sdDate.format(ndt));
+							            model.setJobStartTime("" +sdTime.format(ndt));
+							            Date dt2 = sd.parse(jobj
+							                     .getString(Constants.KEY_MYQUOTES_ENDDATETIME));
+							            Calendar c2 = Calendar.getInstance();
+							            c2.setTime(dt2);
+							            Date ndt2=c2.getTime();
+										model.setJobEndDate(""+sdDate.format(ndt2));
+										model.setJobEndTime(""+sdTime.format(ndt));
+									
+									}catch (ParseException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}*/
+								
+									}
+									
 									model.setZip(jobj
 											.getString(Constants.KEY_MYQUOTES_ZIP));
 									if (!jobj.getString(Constants.KEY_MYQUOTES_DATELASTEVENT).toString().equals("")) {
@@ -411,8 +472,8 @@ public class MyHotQuotesActivity extends Activity implements OnClickListener {
 										} catch (ParseException e) {
 											// TODO Auto-generated catch block
 											e.printStackTrace();
-										}
-									}else {
+										}}
+									else {
 										model.setDate("");
 										model.setTime("");
 									}
@@ -585,11 +646,15 @@ public class MyHotQuotesActivity extends Activity implements OnClickListener {
 		String strFilterDate = txtFilterDate.getText().toString();
 		String strFilterTime = txtFilterTime.getText().toString();
 		String strFilterLocation = autoCompleteLocation.getText().toString();
-		if (strFilterDate.equals("Date")) {
+		if(strFilterDate.equals("Date")){
 			strFilterDate = "";
 		}
 		if (strFilterTime.equals("Time")) {
 			strFilterTime = "";
+		}
+		
+		if(strFilterLocation.equals("City")){
+			strFilterLocation="";
 		}
 		if (strFilterDate.length() > 0 || strFilterLocation.length() > 0|| strFilterTime.length() > 0) {
 
@@ -597,7 +662,7 @@ public class MyHotQuotesActivity extends Activity implements OnClickListener {
 				/** Filter by Date,Time and Location **/
 				bizWizHotQuotesFilter(0, strFilterDate,mFilterTime, strFilterLocation);
 
-			} else if (strFilterDate.length() > 0
+			} else if (strFilterDate.length() >= 0
 					&& strFilterLocation.length() <= 0 && strFilterTime.length() <= 0) {
 				/** Filter by Date **/
 				bizWizHotQuotesFilter(1, strFilterDate, "","");
@@ -636,35 +701,143 @@ public class MyHotQuotesActivity extends Activity implements OnClickListener {
 		}
 
 	}
+	
 
 	private void bizWizHotQuotesFilter(int i, String filterDate,String filterTime, String filterLocation) {
 		// TODO Auto-generated method stub
 		ArrayList<MyHotQuotesModel> sortedHotQuotesList = new ArrayList<MyHotQuotesModel>();
+		
 
 		switch (i) {
 		case 0:
 			/* Filter By Date,Time and Location */
 			for (int j = 0; j <Singleton.getInstance().hotQuotesList.size(); j++) {
 				MyHotQuotesModel model=Singleton.getInstance().hotQuotesList.get(j);
-				if (model.getCity().equals(filterLocation)&&model.getDate().equals(filterDate)&&model.getTime().equals(filterTime)) {
+				if (Integer.valueOf(Id) != InstallationCustomerId  &&model.getCity() != null && model.getCity().equals(filterLocation)&&model.getDate() !=null 
+						&& model.getDate().equals(filterDate)&&model.getTime() != null && model.getTime().equals(filterTime)) {
 					sortedHotQuotesList.add(model);
 				}
+				/* Filter for installation customers listbox */
+				else if(Integer.valueOf(Id)  == InstallationCustomerId){
+					if(model.getJobStartTime() != null && model.getJobEndTime() != null && model.getJobStartTime() != null && model.getJobEndTime() != null){ 
+						SimpleDateFormat df = new SimpleDateFormat("hh:mm a"); 
+						SimpleDateFormat df1 = new SimpleDateFormat("MM/dd/yyyy");
+						Date filterTime1 = null;
+						try {
+							filterTime1 = df.parse(filterTime);
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						Date startTime = null;
+						try {
+							startTime = df.parse(model.getJobStartTime());
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						Date endTime = null;
+						try {
+							endTime = df.parse(model.getJobEndTime());
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						Date filterDate1 = null;
+						try {
+							filterDate1 = df1.parse(filterDate);
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						Date startDate = null;
+						try {
+							startDate = df1.parse(model.getJobStartDate());
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						Date endDate = null;
+						try {
+							endDate = df1.parse(model.getJobEndDate());
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						System.out.println("FilterDate-->" +filterDate1);
+						System.out.println("FilterTime-->" +filterTime1);
+					
+			
+			if((filterTime1.after(startTime) || filterTime1.equals(startTime) && filterTime1.before(endTime) || filterTime1.equals(endTime)) && 
+			((filterDate1.after(startDate) || filterDate1.equals(startDate)) && (filterDate1.before(endDate) || filterDate1.equals(endDate)))&& (model.getCity().equals(filterLocation)))
+			{
+				sortedHotQuotesList.add(model);
 			}
+		    	}
+			      }}
 			break;
 		case 1:
 			/* Filter By Date */
 			for (int j = 0; j <Singleton.getInstance().hotQuotesList.size(); j++) {
 				MyHotQuotesModel model=Singleton.getInstance().hotQuotesList.get(j);
-				if (model.getDate().equals(filterDate)) {
+				System.out.println("STARTDATE:" +model.getJobStartDate());
+				if (Integer.valueOf(Id) != InstallationCustomerId && model.getDate() != null && model.getDate().equals(filterDate)) {
 					sortedHotQuotesList.add(model);
 				}
+				
+				/* Filter for installation customers listbox */
+				else if(Integer.valueOf(Id)  == InstallationCustomerId){
+					if(model.getJobStartDate() != null  && model.getJobEndDate() != null ){ 
+						SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy"); 
+						
+						Date filterDate1 = null;
+						try {
+							filterDate1 = df.parse(filterDate);
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						Date startDate = null;
+						try {
+							startDate = df.parse(model.getJobStartDate());
+							System.out.println("startdate-->" +model.getJobStartDate());
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						Date endDate = null;
+						try {
+							endDate = df.parse(model.getJobEndDate());
+							System.out.println("enddate-->" +model.getJobEndDate());
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						System.out.println("FilterDate-->" +filterDate1);
+			
+			if((filterDate1.after(startDate) || filterDate1.equals(startDate)) && (filterDate1.before(endDate) || filterDate1.equals(endDate))){
+				System.out.println("filterDate1-->" +filterDate1);
+				System.out.println("filterDate1-->" +startDate);
+				System.out.println("filterDate1-->" +endDate);
+				sortedHotQuotesList.add(model);
 			}
+					}
+			        	}}
 			break;
 		case 2:
 			/* Filter By Location */
 			for (int j = 0; j <Singleton.getInstance().hotQuotesList.size(); j++) {
 				MyHotQuotesModel model=Singleton.getInstance().hotQuotesList.get(j);
-				if (model.getCity().equals(filterLocation)) {
+				if (model.getCity() != null && model.getCity().equals(filterLocation)) {
 					sortedHotQuotesList.add(model);
 				}
 			}
@@ -673,37 +846,207 @@ public class MyHotQuotesActivity extends Activity implements OnClickListener {
 			/* Filter By Time */
 			for (int j = 0; j <Singleton.getInstance().hotQuotesList.size(); j++) {
 				MyHotQuotesModel model=Singleton.getInstance().hotQuotesList.get(j);
-				if (model.getTime().equals(filterTime)) {
+				if (Integer.valueOf(Id) != InstallationCustomerId  && model.getTime() != null && model.getTime().equals(filterTime)) {
 					sortedHotQuotesList.add(model);
 				}
+				/* Filter for installation customers listbox */
+				else if(Integer.valueOf(Id)  == InstallationCustomerId){
+					if(model.getJobStartTime() != null && model.getJobEndTime() != null){ 
+						SimpleDateFormat df = new SimpleDateFormat("hh:mm a"); 
+						
+						Date filterTime1 = null;
+						try {
+							filterTime1 = df.parse(filterTime);
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						Date startTime = null;
+						try {
+							startTime = df.parse(model.getJobStartTime());
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						Date endTime = null;
+						try {
+							endTime = df.parse(model.getJobEndTime());
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						System.out.println("FilterTime-->" +filterTime1);
+				
+			if(filterTime1.after(startTime) || filterTime1.equals(startTime) && filterTime1.before(endTime) || filterTime1.equals(endTime)){
+				sortedHotQuotesList.add(model);
 			}
+					}
+				
+			           	}}
 			break;
 		case 4:
 			/* Filter By Date & Time */
 			for (int j = 0; j <Singleton.getInstance().hotQuotesList.size(); j++) {
 				MyHotQuotesModel model=Singleton.getInstance().hotQuotesList.get(j);
-				if (model.getDate().equals(filterDate) && model.getTime().equals(filterTime)) {
+				if (Integer.valueOf(Id) != InstallationCustomerId  && model.getDate() != null && model.getDate().equals(filterDate) && model.getTime() != null && model.getTime().equals(filterTime)) {
 					sortedHotQuotesList.add(model);
 				}
+				
+				/* Filter for installation customers listbox */
+				else if(Integer.valueOf(Id)  == InstallationCustomerId){
+					if(model.getJobStartTime() != null && model.getJobEndTime() != null && model.getJobStartTime() != null && model.getJobEndTime() != null){ 
+						SimpleDateFormat df = new SimpleDateFormat("hh:mm a"); 
+						SimpleDateFormat df1 = new SimpleDateFormat("MM/dd/yyyy");
+						Date filterTime1 = null;
+						try {
+							filterTime1 = df.parse(filterTime);
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						Date startTime = null;
+						try {
+							startTime = df.parse(model.getJobStartTime());
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						Date endTime = null;
+						try {
+							endTime = df.parse(model.getJobEndTime());
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						Date filterDate1 = null;
+						try {
+							filterDate1 = df1.parse(filterDate);
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						Date startDate = null;
+						try {
+							startDate = df1.parse(model.getJobStartDate());
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						Date endDate = null;
+						try {
+							endDate = df1.parse(model.getJobEndDate());
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						System.out.println("FilterDate-->" +filterDate1);
+						System.out.println("FilterTime-->" +filterTime1);
+					
+			if((filterTime1.after(startTime) || filterTime1.equals(startTime)&& filterTime1.before(endTime) || filterTime1.equals(endTime)) && 
+			((filterDate1.after(startDate) || filterDate1.equals(startDate)) && (filterDate1.before(endDate) || filterDate1.equals(endDate))))
+			{
+				sortedHotQuotesList.add(model);
 			}
+					}
+				    	}	}
 			break;
 		case 5:
 			/* Filter By Date & Location */
 			for (int j = 0; j <Singleton.getInstance().hotQuotesList.size(); j++) {
 				MyHotQuotesModel model=Singleton.getInstance().hotQuotesList.get(j);
-				if (model.getDate().equals(filterDate) && model.getCity().equals(filterLocation)) {
+				if (Integer.valueOf(Id) != InstallationCustomerId && model.getDate() != null && model.getDate().equals(filterDate) && model.getCity() != null && model.getCity().equals(filterLocation)) {
 					sortedHotQuotesList.add(model);
 				}
-			}
+				
+				/* Filter for installation customers listbox */
+				else if(Integer.valueOf(Id)  == InstallationCustomerId){
+					if(model.getJobStartDate() != null && model.getJobEndDate() != null){ 
+						SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy"); 
+						
+						Date filterDate1 = null;
+						try {
+							filterDate1 = df.parse(filterDate);
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						Date startDate = null;
+						try {
+							startDate = df.parse(model.getJobStartDate());
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						Date endDate = null;
+						try {
+							endDate = df.parse(model.getJobEndDate());
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						System.out.println("FilterDate-->" +filterDate1);
+			if(((filterDate1.after(startDate) || filterDate1.equals(startDate)) && (filterDate1.before(endDate) || filterDate1.equals(endDate))) && (model.getCity().equals(filterLocation))){
+				sortedHotQuotesList.add(model);
+				}
+					}
+						}}
 			break;
 		case 6:
 			/* Filter By Time & Location */
 			for (int j = 0; j <Singleton.getInstance().hotQuotesList.size(); j++) {
 				MyHotQuotesModel model=Singleton.getInstance().hotQuotesList.get(j);
-				if (model.getTime().equals(filterTime) && model.getCity().equals(filterLocation)) {
+				if (Integer.valueOf(Id) != InstallationCustomerId  && model.getTime() != null && model.getTime().equals(filterTime) && model.getCity() != null && model.getCity().equals(filterLocation)) {
 					sortedHotQuotesList.add(model);
 				}
-			}
+				/* Filter for installation customers listbox */
+				else if(Integer.valueOf(Id)  == InstallationCustomerId){
+					if(model.getJobStartTime() != null && model.getJobEndTime() != null){ 
+						SimpleDateFormat df = new SimpleDateFormat("h:mm a"); 
+						
+						Date filterTime1 = null;
+						try {
+							filterTime1 = df.parse(filterTime);
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						Date startTime = null;
+						try {
+							startTime = df.parse(model.getJobStartTime());
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						Date endTime = null;
+						try {
+							endTime = df.parse(model.getJobEndTime());
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						System.out.println("FilterTime-->" +filterTime1);
+						
+			if((filterTime1.after(startTime) || filterTime1.equals(startTime) && filterTime1.before(endTime) || filterTime1.equals(endTime)) && (model.getCity().equals(filterLocation))){
+				sortedHotQuotesList.add(model);
+				}
+					}	
+						}}
+			
 			break;
 		}
 		if (sortedHotQuotesList.size()>0) {

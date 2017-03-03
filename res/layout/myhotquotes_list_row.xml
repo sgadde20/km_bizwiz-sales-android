@@ -10,9 +10,9 @@
 
     <RelativeLayout
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="144dp"
         android:layout_margin="@dimen/six"
-        android:layout_weight="2.2"
+        android:layout_weight="1.96"
         android:gravity="center_vertical" >
 
         <TextView
@@ -37,6 +37,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView2"
+            android:singleLine="true"
+            android:textSize="@dimen/ten" />
+        
+          <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView3"
+            android:singleLine="true"
+            android:textSize="@dimen/ten" />
+          
+            <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView7"
             android:singleLine="true"
             android:textSize="@dimen/ten" />
     </RelativeLayout>
@@ -71,6 +87,8 @@
             android:layout_below="@+id/textView5"
             android:singleLine="true"
             android:textSize="@dimen/ten" />
+        
+        
     </RelativeLayout>
 
     <ImageView
@@ -81,6 +99,8 @@
         android:layout_margin="@dimen/two"
         android:layout_weight="0.6"
         android:contentDescription="@string/contentDescription"
+        android:maxHeight="@dimen/five"
+        android:maxWidth="@dimen/five"
         android:scaleType="fitCenter"
         android:src="@drawable/selector_ic_call_button_pressed_btn" />
 
