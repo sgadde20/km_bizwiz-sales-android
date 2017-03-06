@@ -205,7 +205,7 @@ public class PhonenumbersDialog {
 					int position, long id) {
 				// TODO Auto-generated method stub
 				dismissAlert();
-				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy hh:mm aa");
+				SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yy hh:mm aa");
 				final String startTime = sdf.format(new Date());
 				Singleton.getInstance().setStartTime(startTime);
 				Singleton.getInstance().setCustomerId(cusID);

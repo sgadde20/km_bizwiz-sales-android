@@ -530,7 +530,7 @@ public class MyHotQuotesActivity extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
 		if(requestCode == Constants.REQUEST_CALLED || requestCode == 0){
-			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy hh:mm aa");
+			SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yy hh:mm aa");
 			final String endTime = sdf.format(new Date());
 			savePhoneAsyncTask = new SavePhoneNumberAsynctask(this,dealerID,employeeID,Singleton.getInstance().getCustomerId(),Singleton.getInstance().getStartTime(),endTime);
 			savePhoneAsyncTask.execute();

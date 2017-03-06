@@ -1683,7 +1683,7 @@ public class CustomerDetailsActivity extends Activity implements
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy hh:mm aa");
+		SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yy hh:mm aa");
 		final String endTime = sdf.format(new Date());
 		if (requestCode == Constants.REQUEST_CALLED || requestCode == 0) {
 			savePhoneAsyncTask = new SavePhoneNumberAsynctask(this, dealerID,
