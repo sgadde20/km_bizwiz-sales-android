@@ -103,8 +103,11 @@ public class CheckUserAccessAsynctask extends AsyncTask<Void, Void, Void> {
 					String status = responseObj.get("Status").toString(); 
 					if (!status.equalsIgnoreCase("success")) {
 						Log.i("CUA", status);
-					//	showCUAdialog(status);
+						showCUAdialog(status);
+						
+						
 					}
+					
 
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
